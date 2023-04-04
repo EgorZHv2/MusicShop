@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Identity;
-using MusicShop.Infrastructure.Identity;
 using MusicShop.Persistance.Contexts;
-using MusicShop.Domain.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options => 
 options.UseNpgsql("Host = localhost;Port = 5432; Database = MusicShopDB; UserId = postgres; Password = 1385620;"));
-builder.Services.AddIdentity<UserEntity, IdentityRole<Guid>>().AddEntityFrameworkStores<AppIdentityDbContext>();
+
 
 
 var app = builder.Build();
@@ -24,6 +22,22 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+
+using (var servicescope = app.Services.CreateScope())
+{
+    var serviceprovider = servicescope.ServiceProvider;
+    try
+    {
+        var context = serviceprovider.GetRequiredService<ApplicationDbContext>();
+        context.Database.EnsureDeleted();
+        context.Database.EnsureCreated();
+        
+    }
+    catch (Exception e)
+    {
+        app.Logger.LogError(e.Message, "Db initializing error");
+    }
 }
 
 app.UseHttpsRedirection();
