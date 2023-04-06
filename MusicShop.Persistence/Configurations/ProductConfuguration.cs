@@ -36,6 +36,12 @@ namespace MusicShop.Persistance.Configurations
                     productPropertyValues.HasKey(entity => new {entity.ProductId, entity.PropertyId});
 
                     productPropertyValues.ToTable("ProductsPropertiesValues");
+
+                    productPropertyValues
+                        .HasOne(entity => entity.ProductPropertySetValue)
+                        .WithMany(productPropertySet => productPropertySet.ProductPropertyValues)
+                        .HasForeignKey(entity => entity.ValueFromSetId)
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             entityTypeBuilder
@@ -77,6 +83,11 @@ namespace MusicShop.Persistance.Configurations
 
                     UserFavoriteProduct.ToTable("UsersFavorites");
                 });
+
+            entityTypeBuilder.HasOne(entity => entity.Category)
+                .WithMany(category => category.Products)
+                .HasForeignKey(entity => entity.CategoryId)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

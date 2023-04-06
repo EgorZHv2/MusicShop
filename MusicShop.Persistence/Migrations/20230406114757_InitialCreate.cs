@@ -22,11 +22,8 @@ namespace MusicShop.Persistance.Migrations
                     Place = table.Column<string>(type: "text", nullable: false),
                     Index = table.Column<string>(type: "text", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedBy = table.Column<Guid>(type: "uuid", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    UpdatedBy = table.Column<Guid>(type: "uuid", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uuid", nullable: true),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
@@ -42,11 +39,8 @@ namespace MusicShop.Persistance.Migrations
                     Name = table.Column<string>(type: "text", nullable: false),
                     ParentCategoryId = table.Column<Guid>(type: "uuid", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedBy = table.Column<Guid>(type: "uuid", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    UpdatedBy = table.Column<Guid>(type: "uuid", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uuid", nullable: true),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
@@ -66,7 +60,11 @@ namespace MusicShop.Persistance.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
-                    ValueType = table.Column<int>(type: "integer", nullable: false)
+                    ValueType = table.Column<int>(type: "integer", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    DeletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -89,11 +87,8 @@ namespace MusicShop.Persistance.Migrations
                     Role = table.Column<int>(type: "integer", nullable: false),
                     LastLogin = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedBy = table.Column<Guid>(type: "uuid", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    UpdatedBy = table.Column<Guid>(type: "uuid", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uuid", nullable: true),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
@@ -113,11 +108,8 @@ namespace MusicShop.Persistance.Migrations
                     Discount = table.Column<double>(type: "double precision", nullable: true),
                     CategoryId = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedBy = table.Column<Guid>(type: "uuid", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    UpdatedBy = table.Column<Guid>(type: "uuid", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uuid", nullable: true),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
@@ -128,7 +120,7 @@ namespace MusicShop.Persistance.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
@@ -202,11 +194,8 @@ namespace MusicShop.Persistance.Migrations
                     Quantity = table.Column<int>(type: "integer", nullable: false),
                     AddressId = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedBy = table.Column<Guid>(type: "uuid", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    UpdatedBy = table.Column<Guid>(type: "uuid", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uuid", nullable: true),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
@@ -233,34 +222,6 @@ namespace MusicShop.Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductsPropertiesValues",
-                columns: table => new
-                {
-                    ProductId = table.Column<Guid>(type: "uuid", nullable: false),
-                    PropertyId = table.Column<Guid>(type: "uuid", nullable: false),
-                    TextValue = table.Column<string>(type: "text", nullable: true),
-                    NumericValue = table.Column<double>(type: "double precision", nullable: true),
-                    BoolValue = table.Column<bool>(type: "boolean", nullable: true),
-                    ValueFromSetId = table.Column<Guid>(type: "uuid", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductsPropertiesValues", x => new { x.ProductId, x.PropertyId });
-                    table.ForeignKey(
-                        name: "FK_ProductsPropertiesValues_ProductsProperties_PropertyId",
-                        column: x => x.PropertyId,
-                        principalTable: "ProductsProperties",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProductsPropertiesValues_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ReviewEntity",
                 columns: table => new
                 {
@@ -270,11 +231,8 @@ namespace MusicShop.Persistance.Migrations
                     ProductId = table.Column<Guid>(type: "uuid", nullable: false),
                     ProductScore = table.Column<int>(type: "integer", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedBy = table.Column<Guid>(type: "uuid", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    UpdatedBy = table.Column<Guid>(type: "uuid", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    DeletedBy = table.Column<Guid>(type: "uuid", nullable: true),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
@@ -314,6 +272,40 @@ namespace MusicShop.Persistance.Migrations
                         name: "FK_UsersFavorites_Users_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductsPropertiesValues",
+                columns: table => new
+                {
+                    ProductId = table.Column<Guid>(type: "uuid", nullable: false),
+                    PropertyId = table.Column<Guid>(type: "uuid", nullable: false),
+                    TextValue = table.Column<string>(type: "text", nullable: true),
+                    NumericValue = table.Column<double>(type: "double precision", nullable: true),
+                    BoolValue = table.Column<bool>(type: "boolean", nullable: true),
+                    ValueFromSetId = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductsPropertiesValues", x => new { x.ProductId, x.PropertyId });
+                    table.ForeignKey(
+                        name: "FK_ProductsPropertiesValues_ProductPropertySetEntity_ValueFrom~",
+                        column: x => x.ValueFromSetId,
+                        principalTable: "ProductPropertySetEntity",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_ProductsPropertiesValues_ProductsProperties_PropertyId",
+                        column: x => x.PropertyId,
+                        principalTable: "ProductsProperties",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProductsPropertiesValues_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -388,6 +380,11 @@ namespace MusicShop.Persistance.Migrations
                 column: "PropertyId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ProductsPropertiesValues_ValueFromSetId",
+                table: "ProductsPropertiesValues",
+                column: "ValueFromSetId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ReviewEntity_ProductId",
                 table: "ReviewEntity",
                 column: "ProductId");
@@ -411,9 +408,6 @@ namespace MusicShop.Persistance.Migrations
                 name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "ProductPropertySetEntity");
-
-            migrationBuilder.DropTable(
                 name: "ProductsPropertiesValues");
 
             migrationBuilder.DropTable(
@@ -429,13 +423,16 @@ namespace MusicShop.Persistance.Migrations
                 name: "Addresses");
 
             migrationBuilder.DropTable(
-                name: "ProductsProperties");
+                name: "ProductPropertySetEntity");
 
             migrationBuilder.DropTable(
                 name: "Products");
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "ProductsProperties");
 
             migrationBuilder.DropTable(
                 name: "Categories");

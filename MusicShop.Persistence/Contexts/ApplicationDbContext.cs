@@ -43,7 +43,6 @@ namespace MusicShop.Persistance.Contexts
             builder.ApplyConfiguration(new ProductConfuguration());
             builder.ApplyConfiguration(new ProductPropertyConfuguration());
             builder.ApplyConfiguration(new ProductPropertySetConfiguration());
-             builder.ApplyConfiguration(new ProductPropertyValueConfiguration());
             builder.ApplyConfiguration(new ReviewConfiguration());
             builder.ApplyConfiguration(new UserConfiguration());
              

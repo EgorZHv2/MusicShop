@@ -10,8 +10,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<ApplicationDbContext>(options => 
-options.UseNpgsql("Host = localhost;Port = 5432; Database = MusicShopDB; UserId = postgres; Password = 1385620;"));
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseNpgsql("Host = localhost;Port = 5432; Database = MusicShopDB; UserId = postgres; Password = 1385620;");
+    options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+});
 
 
 
@@ -23,22 +26,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-using (var servicescope = app.Services.CreateScope())
+using(var scope = app.Services.CreateScope())
 {
-    var serviceprovider = servicescope.ServiceProvider;
-    try
-    {
-        var context = serviceprovider.GetRequiredService<ApplicationDbContext>();
-        context.Database.EnsureDeleted();
-        context.Database.EnsureCreated();
-        
-    }
-    catch (Exception e)
-    {
-        app.Logger.LogError(e.Message, "Db initializing error");
-    }
+    var provider = scope.ServiceProvider;
+    var context = provider.GetRequiredService<ApplicationDbContext>();
+    context.Database.EnsureDeleted();
+    context.Database.EnsureCreated();
 }
+
 
 app.UseHttpsRedirection();
 

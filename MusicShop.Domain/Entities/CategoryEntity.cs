@@ -15,6 +15,7 @@ namespace MusicShop.Domain.Entities
         public List<CategoryEntity> Categories { get; set; } = new List<CategoryEntity>();
         public List<ProductPropertyEntity> ProductProperties { get; set; } 
         public List<CategoryProductProperties> CategoryProductProperties { get; set; }
+        public List<ProductEntity> Products { get; set; }
 
     }
 }

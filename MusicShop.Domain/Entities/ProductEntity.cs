@@ -16,7 +16,7 @@ namespace MusicShop.Domain.Entities
         public int   QuantityInStock { get; set; }
         public double? Discount { get; set; }
         public CategoryEntity Category { get; set; }
-        public Guid CategoryId { get; set; }
+        public Guid? CategoryId { get; set; }
         public List<ProductPropertyEntity> ProductProperties { get; set;}
         public List<ProductPropertyValueEntity> ProductPropertiesValues { get; set; }
 

@@ -12,6 +12,7 @@ namespace MusicShop.Domain.Entities
         public ProductPropertyEntity ProductProperty { get; set; }
         public Guid ProductPropertyId { get; set; }
         public string Value { get; set; }
+        public List<ProductPropertyValueEntity> ProductPropertyValues { get; set; }
 
     }
 }

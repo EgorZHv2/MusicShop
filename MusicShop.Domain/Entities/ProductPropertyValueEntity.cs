@@ -17,6 +17,7 @@ namespace MusicShop.Domain.Entities
         public double? NumericValue { get; set; }
         public bool? BoolValue { get; set; }
         public Guid? ValueFromSetId { get; set; }
+        public ProductPropertySetEntity ProductPropertySetValue { get; set; }
 
     }
 }
