@@ -19,7 +19,7 @@ namespace MusicShop.Persistance.Contexts
         public DbSet<CategoryEntity> Categories { get; set; }
         public DbSet<BasketEntity> Baskets { get; set; }
         public DbSet<OrderEntity> Orders { get; set; }
-        public DbSet<Address> Addresses { get; set; }
+        public DbSet<AddressEntity> Addresses { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) 
         {
           

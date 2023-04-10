@@ -22,7 +22,7 @@ namespace MusicShop.Domain.Entities
 
         public List<OrderEntity> Orders { get; set; }
         public List<BasketEntity> Baskets { get; set; }
-        public List<BasketProduct> BasketProducts { get; set; }
+        public List<ProductBasket> BasketProducts { get; set; }
         public List<UserEntity> Users { get; set; }
         public List<UserFavoriteProduct> UsersFavoriteProducts { get; set; }
     }

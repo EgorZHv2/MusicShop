@@ -16,7 +16,7 @@ namespace MusicShop.Domain.Entities
         public OrderStatus OrderStatus { get; set; }
         public int Quantity { get; set; }
 
-        public Address Address { get; set; }
+        public AddressEntity Address { get; set; }
         public Guid AddressId { get; set; }
 
     }

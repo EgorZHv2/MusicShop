@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MusicShop.Domain.Entities.ManyToManyTables
 {
-    public class CategoryProductProperties
+    public class CategoryProductProperty
     {
         public ProductPropertyEntity ProductProperty { get;set; }
         public Guid ProductPropertyId { get; set; }

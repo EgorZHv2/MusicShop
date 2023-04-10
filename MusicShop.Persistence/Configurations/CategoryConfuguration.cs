@@ -18,7 +18,7 @@ namespace MusicShop.Persistance.Configurations
 
             entityTypeBuilder.HasMany(category => category.ProductProperties)
                 .WithMany(productProp => productProp.CategoryProperties)
-                .UsingEntity<CategoryProductProperties>(categoryProductPropeties =>
+                .UsingEntity<CategoryProductProperty>(categoryProductPropeties =>
                 {
                     categoryProductPropeties.HasOne(entity => entity.ProductProperty)
                     .WithMany(productProperty => productProperty.CategoryProductProperties)

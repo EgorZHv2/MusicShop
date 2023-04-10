@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MusicShop.Persistance.Repositories.Interfaces
+namespace MusicShop.Application.DTO.ProductProperty
 {
-    internal interface IBaseRepository
+    public class CreateProductPropertyDTO
     {
+       
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MusicShop.Domain.Entities;
 using MusicShop.Persistance.Contexts;
+using MusicShop.Persistance.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace MusicShop.Persistance.Repositories
 {
-    public class BaseRepository<TEntity> where TEntity:BaseEntity
+    public class BaseEntityRepository<TEntity>:IBaseEntityRepository<TEntity> where TEntity:BaseEntity
     {
         protected readonly ApplicationDbContext _context;
         protected readonly DbSet<TEntity> _dbset;
 
-        public BaseRepository(ApplicationDbContext context)
+        public BaseEntityRepository(ApplicationDbContext context)
         {
             _context = context;
             _dbset = context.Set<TEntity>();

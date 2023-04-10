@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace MusicShop.Persistance.Configurations
 {
-    public class AddressConfiguration:IEntityTypeConfiguration<Address>
+    public class AddressConfiguration:IEntityTypeConfiguration<AddressEntity>
     {
-        public void Configure(EntityTypeBuilder<Address> builder)
+        public void Configure(EntityTypeBuilder<AddressEntity> builder)
         {
             builder.HasKey(x => x.Id);
         }

@@ -1,6 +1,6 @@
 ﻿namespace MusicShop.Domain.Entities;
 
-public class Address : BaseEntity
+public class AddressEntity : BaseEntity
 {
     public string Country { get; set; }
     public string Region { get; set; }

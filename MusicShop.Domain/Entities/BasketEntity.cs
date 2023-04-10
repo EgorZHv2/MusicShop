@@ -10,7 +10,7 @@ namespace MusicShop.Domain.Entities
     public class BasketEntity
     {
         public List<ProductEntity> Products { get; set; }
-        public List<BasketProduct> BasketProducts { get; set; }
+        public List<ProductBasket> BasketProducts { get; set; }
         public Guid UserId { get; set; }
         public UserEntity User { get; set; }
     }

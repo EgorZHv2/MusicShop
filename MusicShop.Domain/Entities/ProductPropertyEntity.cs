@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace MusicShop.Domain.Entities
 {
-    public class ProductPropertyEntity:BaseEntity
+    public class ProductPropertyEntity
     {
-        
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public PropertyValueType ValueType { get; set; }
 
         public List<ProductEntity> Products { get; set; }
         public List<ProductPropertyValueEntity> ProductPropertiesValues { get; set; }
         public List<CategoryEntity> CategoryProperties { get; set; }
-        public List<CategoryProductProperties> CategoryProductProperties { get; set; }
+        public List<CategoryProductProperty> CategoryProductProperties { get; set; }
         public List<ProductPropertySetEntity> ProductPropertySet { get; set; }
     }
 }

@@ -47,7 +47,7 @@ namespace MusicShop.Persistance.Configurations
             entityTypeBuilder
                 .HasMany(product => product.Baskets)
                 .WithMany(basket => basket.Products)
-                .UsingEntity<BasketProduct>(basketProduct =>
+                .UsingEntity<ProductBasket>(basketProduct =>
                 {
                     basketProduct.HasKey(entity => new { entity.ProductId, entity.BasketId });
                     basketProduct.HasOne(entity => entity.Basket)
