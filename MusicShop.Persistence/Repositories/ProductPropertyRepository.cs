@@ -25,5 +25,9 @@ namespace MusicShop.Persistance.Repositories
             var result = await ToPageModel(values, pagination);
             return result;
        }
+        public  async Task<ProductPropertyEntity?> GetByIdWithSet(Guid Id)
+        {
+            return await _dbset.Include(e=>e.ProductPropertySet).FirstOrDefaultAsync(e=>e.Id == Id);
+        }
     }
 }

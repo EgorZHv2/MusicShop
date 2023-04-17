@@ -15,21 +15,15 @@ namespace MusicShop.Application.Mappers
     {
         public AppMappingProfile() 
         {
-
-
+            //ProductProperty mappings
             CreateMap<CreateProductPropertyDTO, ProductPropertyEntity>();
-
-
-            CreateMap<ProductPropertyEntity, OutputPageProductPropertyDTO>();
-
-
+            CreateMap<UpdateProductPropertyDTO, ProductPropertyEntity>();
+            CreateMap<ProductPropertyEntity, OutputProductPropertyDTO>();
             CreateMap<ProductPropertySetEntity, OutputProductPropertySetDTO>();
-
-
-            CreateMap<PageModelDTO<ProductPropertyEntity>, PageModelDTO<OutputPageProductPropertyDTO>>();
-
-
+            CreateMap<PageModelDTO<ProductPropertyEntity>, PageModelDTO<OutputProductPropertyDTO>>();
             CreateMap<ProductPropertyEntity, OutputShortProductPropertyDTO>();
+
+
 
         }
 

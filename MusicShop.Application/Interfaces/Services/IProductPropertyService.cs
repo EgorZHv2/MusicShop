@@ -18,6 +18,8 @@ namespace MusicShop.Application.Interfaces.Services
 
         Task Delete(Guid id);
 
-        Task<PageModelDTO<OutputPageProductPropertyDTO>> GetPage(PaginationDTO paginationDTO);
+        Task<PageModelDTO<OutputProductPropertyDTO>> GetPage(PaginationDTO paginationDTO);
+        Task Update(UpdateProductPropertyDTO dto);
+        Task<OutputProductPropertyDTO> GetById(Guid id);
     }
 }
