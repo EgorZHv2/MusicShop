@@ -14,6 +14,7 @@ namespace MusicShop.Persistance.Configurations
         public void Configure(EntityTypeBuilder<AddressEntity> builder)
         {
             builder.HasKey(x => x.Id);
+            builder.HasQueryFilter(category => category.IsDeleted == false);
         }
     }
 }

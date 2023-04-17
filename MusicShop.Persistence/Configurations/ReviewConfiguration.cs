@@ -14,7 +14,7 @@ namespace MusicShop.Persistance.Configurations
         public void Configure(EntityTypeBuilder<ReviewEntity> entityTypeBuilder)
         {
             entityTypeBuilder.HasKey(review => review.Id);
-
+             entityTypeBuilder.HasQueryFilter(category => category.IsDeleted == false);
             entityTypeBuilder.HasOne(review => review.User)
                 .WithMany(user => user.Reviews)
                 .HasForeignKey(review => review.UserId)

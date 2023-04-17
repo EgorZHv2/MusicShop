@@ -15,7 +15,7 @@ namespace MusicShop.Persistance.Configurations
         public void Configure(EntityTypeBuilder<CategoryEntity> entityTypeBuilder)
         {
             entityTypeBuilder.HasKey(category => category.Id);
-
+            entityTypeBuilder.HasQueryFilter(category => category.IsDeleted == false);
             entityTypeBuilder.HasMany(category => category.ProductProperties)
                 .WithMany(productProp => productProp.CategoryProperties)
                 .UsingEntity<CategoryProductProperty>(categoryProductPropeties =>

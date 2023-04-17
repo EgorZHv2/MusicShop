@@ -14,6 +14,7 @@ namespace MusicShop.Persistance.Configurations
         public void Configure(EntityTypeBuilder<OrderEntity> entityTypeBuilder)
         {
             entityTypeBuilder.HasKey(order => order.Id);
+             entityTypeBuilder.HasQueryFilter(category => category.IsDeleted == false);
             entityTypeBuilder.HasOne(order => order.User)
                 .WithMany(user => user.Orders)
                 .HasForeignKey(order => order.UserId)
