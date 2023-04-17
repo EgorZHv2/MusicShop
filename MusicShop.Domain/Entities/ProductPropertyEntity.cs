@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace MusicShop.Domain.Entities
 {
-    public class ProductPropertyEntity
+    public class ProductPropertyEntity:BaseEntity
     {
-        public Guid Id { get; set; }
+       
         public string Name { get; set; }
         public PropertyValueType ValueType { get; set; }
 
@@ -18,6 +18,6 @@ namespace MusicShop.Domain.Entities
         public List<ProductPropertyValueEntity> ProductPropertiesValues { get; set; }
         public List<CategoryEntity> CategoryProperties { get; set; }
         public List<CategoryProductProperty> CategoryProductProperties { get; set; }
-        public List<ProductPropertySetEntity> ProductPropertySet { get; set; }
+        public List<ProductPropertySetEntity> ProductPropertySet { get; set; } = new List<ProductPropertySetEntity>();
     }
 }

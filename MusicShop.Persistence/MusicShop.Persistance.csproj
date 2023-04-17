@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MusicShop.Application\MusicShop.Application.csproj" />
     <ProjectReference Include="..\MusicShop.Domain\MusicShop.Domain.csproj" />
   </ItemGroup>
 
