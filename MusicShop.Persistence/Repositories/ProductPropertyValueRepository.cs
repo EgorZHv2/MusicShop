@@ -1,4 +1,4 @@
-﻿using MusicShop.Persistance.Repositories.Interfaces;
+﻿using MusicShop.Application.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

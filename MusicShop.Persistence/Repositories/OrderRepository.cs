@@ -1,6 +1,6 @@
 ﻿using MusicShop.Domain.Entities;
 using MusicShop.Persistance.Contexts;
-using MusicShop.Persistance.Repositories.Interfaces;
+using MusicShop.Application.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

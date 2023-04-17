@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MusicShop.Domain.Entities;
 using MusicShop.Persistance.Contexts;
-using MusicShop.Persistance.Repositories.Interfaces;
+using MusicShop.Application.DTO.PageModels;
+using MusicShop.Application.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,13 @@ namespace MusicShop.Persistance.Repositories
         {
             _context = context;
             _dbset = context.Set<TEntity>();
+        }
+
+        public virtual async Task<PageModelDTO<TEntity>> GetPage(PaginationDTO pagination)
+        {
+          
+            var result = await ToPageModel<TEntity>(_dbset, pagination);
+            return result;
         }
 
         public virtual async Task<TEntity?> GetById(Guid Id)
@@ -99,5 +107,18 @@ namespace MusicShop.Persistance.Repositories
             _dbset.RemoveRange(entities);
             await _context.SaveChangesAsync();
         }
+
+        protected async Task<PageModelDTO<T>> ToPageModel<T>(IQueryable<T> values,PaginationDTO dto)
+        {
+            return new PageModelDTO<T>
+            {
+                Values = await values.Skip((dto.PageNumber - 1) * dto.PageSize).Take(dto.PageSize).ToListAsync(),
+                ItemsOnPage = dto.PageSize,
+                CurrentPage = dto.PageNumber,
+                TotalItems = values.Count(),
+                TotalPages = (int)Math.Ceiling(_dbset.Count() / (double)dto.PageSize)
+            };
+        }
+
     }
 }
