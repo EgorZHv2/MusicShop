@@ -104,6 +104,7 @@ namespace MusicShop.Persistance.Migrations
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
                     Price = table.Column<decimal>(type: "numeric", nullable: false),
+                    ProductStatus = table.Column<int>(type: "integer", nullable: false),
                     QuantityInStock = table.Column<int>(type: "integer", nullable: false),
                     Discount = table.Column<double>(type: "double precision", nullable: true),
                     CategoryId = table.Column<Guid>(type: "uuid", nullable: false),
@@ -148,7 +149,7 @@ namespace MusicShop.Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductPropertySetEntity",
+                name: "ProductPropertiesSets",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -157,9 +158,9 @@ namespace MusicShop.Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductPropertySetEntity", x => x.Id);
+                    table.PrimaryKey("PK_ProductPropertiesSets", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProductPropertySetEntity_ProductsProperties_ProductProperty~",
+                        name: "FK_ProductPropertiesSets_ProductsProperties_ProductPropertyId",
                         column: x => x.ProductPropertyId,
                         principalTable: "ProductsProperties",
                         principalColumn: "Id",
@@ -291,9 +292,9 @@ namespace MusicShop.Persistance.Migrations
                 {
                     table.PrimaryKey("PK_ProductsPropertiesValues", x => new { x.ProductId, x.PropertyId });
                     table.ForeignKey(
-                        name: "FK_ProductsPropertiesValues_ProductPropertySetEntity_ValueFrom~",
+                        name: "FK_ProductsPropertiesValues_ProductPropertiesSets_ValueFromSet~",
                         column: x => x.ValueFromSetId,
-                        principalTable: "ProductPropertySetEntity",
+                        principalTable: "ProductPropertiesSets",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
@@ -365,8 +366,8 @@ namespace MusicShop.Persistance.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductPropertySetEntity_ProductPropertyId",
-                table: "ProductPropertySetEntity",
+                name: "IX_ProductPropertiesSets_ProductPropertyId",
+                table: "ProductPropertiesSets",
                 column: "ProductPropertyId");
 
             migrationBuilder.CreateIndex(
@@ -423,7 +424,7 @@ namespace MusicShop.Persistance.Migrations
                 name: "Addresses");
 
             migrationBuilder.DropTable(
-                name: "ProductPropertySetEntity");
+                name: "ProductPropertiesSets");
 
             migrationBuilder.DropTable(
                 name: "Products");

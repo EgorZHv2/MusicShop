@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using MusicShop.Application.DTO.Category;
 using MusicShop.Application.DTO.PageModels;
+using MusicShop.Application.DTO.Product;
 using MusicShop.Application.DTO.ProductProperty;
 using MusicShop.Application.DTO.ProductPropertySet;
+using MusicShop.Application.DTO.ProductPropertyValue;
 using MusicShop.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -30,6 +32,11 @@ namespace MusicShop.Application.Mappers
             CreateMap<CategoryEntity,OutputCategoryDTO>();
             CreateMap<CategoryEntity, OutputShortCategoryDTO>();
             CreateMap<PageModelDTO<CategoryEntity>,PageModelDTO<OutputCategoryDTO>>();
+
+            //Product maps
+            CreateMap<ProductPropertyValueDTO,ProductPropertyValueEntity>().ReverseMap();
+            CreateMap<CreateProductDTO, ProductEntity>();
+            CreateMap<UpdateProductDTO, ProductEntity>();
          
         }
 

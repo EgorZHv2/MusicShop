@@ -41,7 +41,6 @@ namespace MusicShop.Application.Services
                 entity.ProductProperties.AddRange(properties);
                 await  _categoryRepository.Update(entity);
             }
-           
             return result;
         }
         public async Task Update(UpdateCategoryDTO dto)

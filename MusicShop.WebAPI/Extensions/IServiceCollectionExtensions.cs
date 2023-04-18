@@ -40,6 +40,7 @@ namespace MusicShop.WebAPI.Extensions
 
             services.AddScoped<IProductPropertyService, ProductPropertyService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProductService, ProductService>();
         }
     }
 }

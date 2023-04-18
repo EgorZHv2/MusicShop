@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MusicShop.Persistance.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230406114757_InitialCreate")]
+    [Migration("20230418134445_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace MusicShop.Persistance.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("MusicShop.Domain.Entities.Address", b =>
+            modelBuilder.Entity("MusicShop.Domain.Entities.AddressEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -110,22 +110,7 @@ namespace MusicShop.Persistance.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("MusicShop.Domain.Entities.ManyToManyTables.BasketProduct", b =>
-                {
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("BasketId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("ProductId", "BasketId");
-
-                    b.HasIndex("BasketId");
-
-                    b.ToTable("BasketsProducts", (string)null);
-                });
-
-            modelBuilder.Entity("MusicShop.Domain.Entities.ManyToManyTables.CategoryProductProperties", b =>
+            modelBuilder.Entity("MusicShop.Domain.Entities.ManyToManyTables.CategoryProductProperty", b =>
                 {
                     b.Property<Guid>("ProductPropertyId")
                         .HasColumnType("uuid");
@@ -138,6 +123,21 @@ namespace MusicShop.Persistance.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("CategoryProductProperties", (string)null);
+                });
+
+            modelBuilder.Entity("MusicShop.Domain.Entities.ManyToManyTables.ProductBasket", b =>
+                {
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("BasketId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("ProductId", "BasketId");
+
+                    b.HasIndex("BasketId");
+
+                    b.ToTable("BasketsProducts", (string)null);
                 });
 
             modelBuilder.Entity("MusicShop.Domain.Entities.ManyToManyTables.UserFavoriteProduct", b =>
@@ -203,8 +203,7 @@ namespace MusicShop.Persistance.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("CategoryId")
-                        .IsRequired()
+                    b.Property<Guid>("CategoryId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedAt")
@@ -229,6 +228,9 @@ namespace MusicShop.Persistance.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
+
+                    b.Property<int>("ProductStatus")
+                        .HasColumnType("integer");
 
                     b.Property<int>("QuantityInStock")
                         .HasColumnType("integer");
@@ -290,7 +292,7 @@ namespace MusicShop.Persistance.Migrations
 
                     b.HasIndex("ProductPropertyId");
 
-                    b.ToTable("ProductPropertySetEntity");
+                    b.ToTable("ProductPropertiesSets");
                 });
 
             modelBuilder.Entity("MusicShop.Domain.Entities.ProductPropertyValueEntity", b =>
@@ -442,26 +444,7 @@ namespace MusicShop.Persistance.Migrations
                     b.Navigation("ParentCategory");
                 });
 
-            modelBuilder.Entity("MusicShop.Domain.Entities.ManyToManyTables.BasketProduct", b =>
-                {
-                    b.HasOne("MusicShop.Domain.Entities.BasketEntity", "Basket")
-                        .WithMany("BasketProducts")
-                        .HasForeignKey("BasketId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MusicShop.Domain.Entities.ProductEntity", "Product")
-                        .WithMany("BasketProducts")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Basket");
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("MusicShop.Domain.Entities.ManyToManyTables.CategoryProductProperties", b =>
+            modelBuilder.Entity("MusicShop.Domain.Entities.ManyToManyTables.CategoryProductProperty", b =>
                 {
                     b.HasOne("MusicShop.Domain.Entities.CategoryEntity", "Category")
                         .WithMany("CategoryProductProperties")
@@ -478,6 +461,25 @@ namespace MusicShop.Persistance.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("ProductProperty");
+                });
+
+            modelBuilder.Entity("MusicShop.Domain.Entities.ManyToManyTables.ProductBasket", b =>
+                {
+                    b.HasOne("MusicShop.Domain.Entities.BasketEntity", "Basket")
+                        .WithMany("BasketProducts")
+                        .HasForeignKey("BasketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MusicShop.Domain.Entities.ProductEntity", "Product")
+                        .WithMany("BasketProducts")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Basket");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("MusicShop.Domain.Entities.ManyToManyTables.UserFavoriteProduct", b =>
@@ -501,7 +503,7 @@ namespace MusicShop.Persistance.Migrations
 
             modelBuilder.Entity("MusicShop.Domain.Entities.OrderEntity", b =>
                 {
-                    b.HasOne("MusicShop.Domain.Entities.Address", "Address")
+                    b.HasOne("MusicShop.Domain.Entities.AddressEntity", "Address")
                         .WithMany("Orders")
                         .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -593,7 +595,7 @@ namespace MusicShop.Persistance.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MusicShop.Domain.Entities.Address", b =>
+            modelBuilder.Entity("MusicShop.Domain.Entities.AddressEntity", b =>
                 {
                     b.Navigation("Orders");
                 });

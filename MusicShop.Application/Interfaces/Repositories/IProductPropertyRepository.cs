@@ -6,5 +6,6 @@ namespace MusicShop.Application.Interfaces.Repositories
     {
         Task<List<ProductPropertyEntity>> GetAll();
         Task<ProductPropertyEntity?> GetByIdWithSet(Guid Id);
+        Task<List<ProductPropertyEntity>> GetPropertiesByCategoryId(Guid id);
     }
 }

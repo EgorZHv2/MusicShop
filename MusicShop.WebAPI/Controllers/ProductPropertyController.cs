@@ -46,11 +46,17 @@ namespace MusicShop.WebAPI.Controllers
             return Ok();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             await _productPropertyService.Delete(id);
             return Ok();
+        }
+        [HttpGet("by-category-id/{id}")]
+        public async Task<IActionResult> GetByCategoryId(Guid id)
+        {
+            var result = await _productPropertyService.GetProptiesByCategoryId(id);
+            return Ok(result);
         }
     }
 }

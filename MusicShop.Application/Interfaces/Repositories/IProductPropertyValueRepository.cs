@@ -2,5 +2,6 @@
 {
     public interface IProductPropertyValueRepository
     {
+        Task DeleteAllByProductId(Guid id);
     }
 }

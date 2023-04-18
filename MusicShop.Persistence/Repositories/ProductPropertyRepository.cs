@@ -25,9 +25,18 @@ namespace MusicShop.Persistance.Repositories
             var result = await ToPageModel(values, pagination);
             return result;
        }
-        public  async Task<ProductPropertyEntity?> GetByIdWithSet(Guid Id)
-        {
+       public  async Task<ProductPropertyEntity?> GetByIdWithSet(Guid Id)
+       {
             return await _dbset.Include(e=>e.ProductPropertySet).FirstOrDefaultAsync(e=>e.Id == Id);
-        }
+       }
+       public async Task<List<ProductPropertyEntity>> GetPropertiesByCategoryId(Guid id)
+       {
+            return await _dbset
+                .Include(e => e.CategoryProductProperties)
+                .Include(e=>e.ProductPropertySet)
+                .Where(e => e.CategoryProductProperties.Any(e=>e.CategoryId == id))
+                .ToListAsync();
+       }
+
     }
 }
