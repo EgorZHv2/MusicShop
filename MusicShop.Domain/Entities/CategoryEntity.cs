@@ -13,7 +13,7 @@ namespace MusicShop.Domain.Entities
         public CategoryEntity? ParentCategory { get; set; }
         public Guid? ParentCategoryId { get; set; }
         public List<CategoryEntity> Categories { get; set; } = new List<CategoryEntity>();
-        public List<ProductPropertyEntity> ProductProperties { get; set; } 
+        public List<ProductPropertyEntity> ProductProperties { get; set; } = new List<ProductPropertyEntity>();
         public List<CategoryProductProperty> CategoryProductProperties { get; set; }
         public List<ProductEntity> Products { get; set; }
 

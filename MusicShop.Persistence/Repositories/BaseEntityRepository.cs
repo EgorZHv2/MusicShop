@@ -24,7 +24,6 @@ namespace MusicShop.Persistance.Repositories
 
         public virtual async Task<PageModelDTO<TEntity>> GetPage(PaginationDTO pagination)
         {
-          
             var result = await ToPageModel<TEntity>(_dbset, pagination);
             return result;
         }
@@ -34,9 +33,9 @@ namespace MusicShop.Persistance.Repositories
             return await _dbset.FirstOrDefaultAsync(e => e.Id == Id);
         }
 
-        public  IEnumerable<TEntity> GetManyByIds(ICollection<Guid> ids)
+        public  async  Task<IEnumerable<TEntity>> GetManyByIds(ICollection<Guid> ids)
         {
-            return _dbset.Where(e => ids.Contains(e.Id));
+            return await _dbset.Where(e => ids.Contains(e.Id)).ToListAsync();
         }
 
         

@@ -7,7 +7,7 @@ namespace MusicShop.Application.Interfaces.Repositories
     {
         Task<TEntity?> GetById(Guid Id);
         Task<PageModelDTO<TEntity>> GetPage(PaginationDTO pagination);
-        IEnumerable<TEntity> GetManyByIds(ICollection<Guid> ids);
+        Task<IEnumerable<TEntity>> GetManyByIds(ICollection<Guid> ids);
 
         Task<Guid> Create(TEntity entity);
 

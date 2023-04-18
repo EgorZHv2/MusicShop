@@ -39,6 +39,7 @@ namespace MusicShop.WebAPI.Extensions
             services.AddAutoMapper(typeof(AppMappingProfile));
 
             services.AddScoped<IProductPropertyService, ProductPropertyService>();
+            services.AddScoped<ICategoryService, CategoryService>();
         }
     }
 }

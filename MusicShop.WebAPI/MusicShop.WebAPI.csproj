@@ -18,10 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MusicShop.Application\MusicShop.Application.csproj" />
     <ProjectReference Include="..\MusicShop.Domain\MusicShop.Domain.csproj" />
     <ProjectReference Include="..\MusicShop.Infrastructure\MusicShop.Infrastructure.csproj" />

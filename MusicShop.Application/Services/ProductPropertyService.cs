@@ -36,8 +36,7 @@ namespace MusicShop.Application.Services
             var result = await _productPropertyRepository.Create(entity);
             if (dto.ValueType == Domain.Enums.PropertyValueType.Set && dto.Values.Any())
             {
-              await  _productPropertySetRepository.DeleteAllByPropertyId(result);
-              await _productPropertySetRepository.CreateMany(result, dto.Values); 
+             await _productPropertySetRepository.CreateMany(result, dto.Values); 
             }
             return result;
         }

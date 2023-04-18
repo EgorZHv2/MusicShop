@@ -2,5 +2,6 @@
 {
     public interface ICategoryProductPropertyRepository
     {
+       Task DeleteAllByCategoryId(Guid categoryId);
     }
 }

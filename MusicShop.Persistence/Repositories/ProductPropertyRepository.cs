@@ -17,7 +17,7 @@ namespace MusicShop.Persistance.Repositories
 
        public async Task<List<ProductPropertyEntity>> GetAll() 
        {
-            return await _dbset.Include(e=>e.ProductPropertySet).ToListAsync();
+            return await _dbset.ToListAsync();
        }
        public override async Task<PageModelDTO<ProductPropertyEntity>> GetPage(PaginationDTO pagination)
        {

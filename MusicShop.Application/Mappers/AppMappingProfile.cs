@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MusicShop.Application.DTO.Category;
 using MusicShop.Application.DTO.PageModels;
 using MusicShop.Application.DTO.ProductProperty;
 using MusicShop.Application.DTO.ProductPropertySet;
@@ -15,7 +16,7 @@ namespace MusicShop.Application.Mappers
     {
         public AppMappingProfile() 
         {
-            //ProductProperty mappings
+            //ProductProperty maps
             CreateMap<CreateProductPropertyDTO, ProductPropertyEntity>();
             CreateMap<UpdateProductPropertyDTO, ProductPropertyEntity>();
             CreateMap<ProductPropertyEntity, OutputProductPropertyDTO>();
@@ -23,8 +24,13 @@ namespace MusicShop.Application.Mappers
             CreateMap<PageModelDTO<ProductPropertyEntity>, PageModelDTO<OutputProductPropertyDTO>>();
             CreateMap<ProductPropertyEntity, OutputShortProductPropertyDTO>();
 
-
-
+            //Category maps
+            CreateMap<CreateCategoryDTO, CategoryEntity>();
+            CreateMap<UpdateCategoryDTO, CategoryEntity>();
+            CreateMap<CategoryEntity,OutputCategoryDTO>();
+            CreateMap<CategoryEntity, OutputShortCategoryDTO>();
+            CreateMap<PageModelDTO<CategoryEntity>,PageModelDTO<OutputCategoryDTO>>();
+         
         }
 
     }
