@@ -15,13 +15,13 @@ namespace MusicShop.WebAPI.Controllers
             _productService = productService;
         }
         [HttpPost]
-        public async Task<IActionResult> Create(CreateProductDTO dto)
+        public async Task<IActionResult> Create(ProductCreateDTO dto)
         {
             var result = await _productService.Create(dto);
             return Ok(result);
         }
         [HttpPut]
-        public async Task<IActionResult> Update(UpdateProductDTO dto)
+        public async Task<IActionResult> Update(ProductUpdateDTO dto)
         {
             await _productService.Update(dto);
             return Ok();

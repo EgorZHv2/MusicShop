@@ -16,13 +16,13 @@ namespace MusicShop.WebAPI.Controllers
             _categoryService = categoryService;
         }
         [HttpPost]
-        public async Task<IActionResult> Create(CreateCategoryDTO dto)
+        public async Task<IActionResult> Create(CategoryCreateDTO dto)
         {
             var result = await _categoryService.Create(dto);
             return Ok(result);
         }
         [HttpPut]
-        public async Task<IActionResult> Update(UpdateCategoryDTO dto)
+        public async Task<IActionResult> Update(CategoryUpdateDTO dto)
         {
             await _categoryService.Update(dto);
             return Ok();

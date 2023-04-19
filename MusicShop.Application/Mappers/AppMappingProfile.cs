@@ -6,6 +6,7 @@ using MusicShop.Application.DTO.Product;
 using MusicShop.Application.DTO.ProductProperty;
 using MusicShop.Application.DTO.ProductPropertySet;
 using MusicShop.Application.DTO.ProductPropertyValue;
+using MusicShop.Application.DTO.Review;
 using MusicShop.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -20,27 +21,34 @@ namespace MusicShop.Application.Mappers
         public AppMappingProfile() 
         {
             //ProductProperty maps
-            CreateMap<CreateProductPropertyDTO, ProductPropertyEntity>();
-            CreateMap<UpdateProductPropertyDTO, ProductPropertyEntity>();
-            CreateMap<ProductPropertyEntity, OutputProductPropertyDTO>();
-            CreateMap<ProductPropertySetEntity, OutputProductPropertySetDTO>();
-            CreateMap<PageModelDTO<ProductPropertyEntity>, PageModelDTO<OutputProductPropertyDTO>>();
-            CreateMap<ProductPropertyEntity, OutputShortProductPropertyDTO>();
+            CreateMap<ProductPropertyCreateDTO, ProductPropertyEntity>();
+            CreateMap<ProductPropertyUpdateDTO, ProductPropertyEntity>();
+            CreateMap<ProductPropertyEntity, ProductPropertyOutputDTO>();
+            CreateMap<ProductPropertySetEntity, ProductPropertySetOutputDTO>();
+            CreateMap<PageModelDTO<ProductPropertyEntity>, PageModelDTO<ProductPropertyOutputDTO>>();
+            CreateMap<ProductPropertyEntity, ProductPropertyShortOutputDTO>();
 
             //Category maps
-            CreateMap<CreateCategoryDTO, CategoryEntity>();
-            CreateMap<UpdateCategoryDTO, CategoryEntity>();
-            CreateMap<CategoryEntity,OutputCategoryDTO>();
-            CreateMap<CategoryEntity, OutputShortCategoryDTO>();
-            CreateMap<PageModelDTO<CategoryEntity>,PageModelDTO<OutputCategoryDTO>>();
+            CreateMap<CategoryCreateDTO, CategoryEntity>();
+            CreateMap<CategoryUpdateDTO, CategoryEntity>();
+            CreateMap<CategoryEntity,CategoryOutputDTO>();
+            CreateMap<CategoryEntity, CategoryShortOutputDTO>();
+            CreateMap<PageModelDTO<CategoryEntity>,PageModelDTO<CategoryOutputDTO>>();
 
             //Product maps
             CreateMap<ProductPropertyValueDTO,ProductPropertyValueEntity>().ReverseMap();
-            CreateMap<CreateProductDTO, ProductEntity>();
-            CreateMap<UpdateProductDTO, ProductEntity>();
+            CreateMap<ProductCreateDTO, ProductEntity>();
+            CreateMap<ProductUpdateDTO, ProductEntity>();
 
             //User maps
             CreateMap<RegisterDTO, UserEntity>();
+
+            //Review maps
+            CreateMap<ReviewCreateDTO, ReviewEntity>();
+            CreateMap<ReviewUpdateDTO, ReviewEntity>();
+            CreateMap<ReviewEntity, ReviewOutputDTO>();
+            CreateMap<ReviewEntity,ReviewListOutputDTO>();
+            CreateMap<PageModelDTO<ReviewEntity>, PageModelDTO<ReviewListOutputDTO>>();
          
         }
 

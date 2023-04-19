@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MusicShop.Application.DTO.ProductProperty
 {
-    public class UpdateProductPropertyDTO
+    public class ProductPropertyUpdateDTO
     {
        [Required]
        public Guid Id { get; set; }

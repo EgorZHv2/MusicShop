@@ -9,10 +9,8 @@ using System.Threading.Tasks;
 
 namespace MusicShop.Application.DTO.Product
 {
-    public class UpdateProductDTO
+    public class ProductCreateDTO
     {
-        [Required]
-        public Guid Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
@@ -20,9 +18,9 @@ namespace MusicShop.Application.DTO.Product
         [Required]
         public decimal Price { get; set; }
         [Required]
-        public int   QuantityInStock { get; set; }
-        [Required]
         public ProductStatus ProductStatus { get; set; }
+        [Required]
+        public int   QuantityInStock { get; set; }
         public double? Discount { get; set; }
         [Required]
         public Guid CategoryId { get; set; }

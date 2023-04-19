@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MusicShop.Application.DTO.Category
+namespace MusicShop.Application.DTO.ProductProperty
 {
-    public class OutputShortCategoryDTO
+    public class ProductPropertyShortOutputDTO
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

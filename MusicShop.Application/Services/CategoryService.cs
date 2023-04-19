@@ -31,7 +31,7 @@ namespace MusicShop.Application.Services
             _productPropertyRepository = productPropertyRepository;
             _categoryProductProperty = categoryProductProperty;
         }
-        public async Task<Guid> Create(CreateCategoryDTO dto)
+        public async Task<Guid> Create(CategoryCreateDTO dto)
         {
             var entity = _mapper.Map<CategoryEntity>(dto);
             var result = await _categoryRepository.Create(entity);
@@ -43,36 +43,36 @@ namespace MusicShop.Application.Services
             }
             return result;
         }
-        public async Task Update(UpdateCategoryDTO dto)
+        public async Task Update(CategoryUpdateDTO dto)
         {
-            var existedEntity = await _categoryRepository.GetById(dto.Id);
-            _mapper.Map(dto, existedEntity);
+            var existingEntity = await _categoryRepository.GetById(dto.Id);
+            _mapper.Map(dto, existingEntity);
             await _categoryProductProperty.DeleteAllByCategoryId(dto.Id);
             if (dto.PropertiesIds.Any())
             {
                
                 var properties = await _productPropertyRepository.GetManyByIds(dto.PropertiesIds);
-                existedEntity.ProductProperties.AddRange(properties);
+                existingEntity.ProductProperties.AddRange(properties);
             }
-            await _categoryRepository.Update(existedEntity);
+            await _categoryRepository.Update(existingEntity);
         }
 
-        public async Task<List<OutputShortCategoryDTO>> GetShortList()
+        public async Task<List<CategoryShortOutputDTO>> GetShortList()
         {
             var entities = await _categoryRepository.GetAll();
-            var result = _mapper.Map<List<OutputShortCategoryDTO>>(entities);
+            var result = _mapper.Map<List<CategoryShortOutputDTO>>(entities);
             return result;
         }
-        public async Task<PageModelDTO<OutputCategoryDTO>> GetPage(PaginationDTO dto)
+        public async Task<PageModelDTO<CategoryOutputDTO>> GetPage(PaginationDTO dto)
         {
             var entities = await _categoryRepository.GetPage(dto);
-            var result = _mapper.Map<PageModelDTO<OutputCategoryDTO>>(entities);
+            var result = _mapper.Map<PageModelDTO<CategoryOutputDTO>>(entities);
             return result;
         }
-        public async Task<OutputCategoryDTO> GetById(Guid id)
+        public async Task<CategoryOutputDTO> GetById(Guid id)
         {
             var entity = await _categoryRepository.GetByIdWithProperties(id);
-            var result = _mapper.Map<OutputCategoryDTO>(entity);
+            var result = _mapper.Map<CategoryOutputDTO>(entity);
             return result;
         }
         public async Task Delete(Guid id)

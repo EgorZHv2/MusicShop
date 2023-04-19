@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MusicShop.Application.DTO.ProductPropertyValue
 {
-    public class OutputPropertyValuesForProductDTO
+    public class PropertyValuesForProductOutputDTO
     {
         public string PropertyName { get; set; } 
         public string PropertyValue { get; set; }

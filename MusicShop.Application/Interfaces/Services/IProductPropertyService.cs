@@ -12,15 +12,15 @@ namespace MusicShop.Application.Interfaces.Services
 {
     public interface IProductPropertyService
     {
-        Task<Guid> Create(CreateProductPropertyDTO dto);
+        Task<Guid> Create(ProductPropertyCreateDTO dto);
 
-        Task<List<OutputShortProductPropertyDTO>> GetShortList();
+        Task<List<ProductPropertyShortOutputDTO>> GetShortList();
 
         Task Delete(Guid id);
 
-        Task<PageModelDTO<OutputProductPropertyDTO>> GetPage(PaginationDTO paginationDTO);
-        Task Update(UpdateProductPropertyDTO dto);
-        Task<OutputProductPropertyDTO> GetById(Guid id);
-        Task<List<OutputProductPropertyDTO>> GetProptiesByCategoryId(Guid id);
+        Task<PageModelDTO<ProductPropertyOutputDTO>> GetPage(PaginationDTO paginationDTO);
+        Task Update(ProductPropertyUpdateDTO dto);
+        Task<ProductPropertyOutputDTO> GetById(Guid id);
+        Task<List<ProductPropertyOutputDTO>> GetProptiesByCategoryId(Guid id);
     }
 }

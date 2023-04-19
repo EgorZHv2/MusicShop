@@ -22,7 +22,7 @@ namespace MusicShop.WebAPI.Controllers
             return Ok(result);
         }
         [HttpPost]
-        public async Task<IActionResult> Create(CreateProductPropertyDTO dto)
+        public async Task<IActionResult> Create(ProductPropertyCreateDTO dto)
         {
             var result = await _productPropertyService.Create(dto);
             return Ok(result);
@@ -40,7 +40,7 @@ namespace MusicShop.WebAPI.Controllers
             return Ok(result);
         }
         [HttpPut]
-        public async Task<IActionResult> Update(UpdateProductPropertyDTO dto)
+        public async Task<IActionResult> Update(ProductPropertyUpdateDTO dto)
         {
             await _productPropertyService.Update(dto);
             return Ok();

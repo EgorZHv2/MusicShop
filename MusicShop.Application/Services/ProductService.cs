@@ -27,24 +27,25 @@ namespace MusicShop.Application.Services
             _mapper= mapper;
             _productPropertyValues = productPropertyValues;
         }
-        public async Task<Guid> Create(CreateProductDTO dto)
+        public async Task<Guid> Create(ProductCreateDTO dto)
         {
             var entity = _mapper.Map<ProductEntity>(dto);
             var result = await _productRepository.Create(entity);
             return result;
         }
-        public async Task Update(UpdateProductDTO dto)
+        public async Task Update(ProductUpdateDTO dto)
         {
-            var existedEntity = await _productRepository.GetById(dto.Id);
-            _mapper.Map(dto, existedEntity);
-            await _productPropertyValues.DeleteAllByProductId(existedEntity.Id);
-            await _productRepository.Update(existedEntity);
+            var existingEntity = await _productRepository.GetById(dto.Id);
+            _mapper.Map(dto, existingEntity);
+            await _productPropertyValues.DeleteAllByProductId(existingEntity.Id);
+            await _productRepository.Update(existingEntity);
         }
-        public async Task<OutputProductDTO> GetById(Guid id)
+        public async Task<ProductOutputDTO> GetById(Guid id)
         {
             var entity = await _productRepository.GetById(id);
-            var result = _mapper.Map<OutputProductDTO>(entity);
+            var result = _mapper.Map<ProductOutputDTO>(entity);
             return result;
         }
+        
     }
 }

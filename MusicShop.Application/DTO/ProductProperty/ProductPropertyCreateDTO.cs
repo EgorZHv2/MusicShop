@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MusicShop.Application.DTO.ProductProperty
 {
-    public class CreateProductPropertyDTO
+    public class ProductPropertyCreateDTO
     {
        [Required]
        public string Name { get; set; }

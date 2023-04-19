@@ -9,7 +9,7 @@ namespace MusicShop.Application.Interfaces.Services
 {
     public interface IProductService
     {
-        Task<Guid> Create(CreateProductDTO dto);
-        Task Update(UpdateProductDTO dto);
+        Task<Guid> Create(ProductCreateDTO dto);
+        Task Update(ProductUpdateDTO dto);
     }
 }

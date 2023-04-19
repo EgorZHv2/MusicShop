@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace MusicShop.Application.DTO.ProductProperty
 {
-    public class OutputProductPropertyDTO
+    public class ProductPropertyOutputDTO
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
         public PropertyValueType ValueType { get; set; }
-        public List<OutputProductPropertySetDTO> ProductPropertySet { get; set; } = new List<OutputProductPropertySetDTO>();
+        public List<ProductPropertySetOutputDTO> ProductPropertySet { get; set; } = new List<ProductPropertySetOutputDTO>();
         
     }
 }

@@ -29,7 +29,7 @@ namespace MusicShop.Application.Services
             _productPropertySetRepository = productPropertySetRepository;
         }
 
-        public async Task<Guid> Create(CreateProductPropertyDTO dto)
+        public async Task<Guid> Create(ProductPropertyCreateDTO dto)
         {
             var entity = _mapper.Map<ProductPropertyEntity>(dto);
 
@@ -41,10 +41,10 @@ namespace MusicShop.Application.Services
             return result;
         }
 
-        public async Task<List<OutputShortProductPropertyDTO>> GetShortList()
+        public async Task<List<ProductPropertyShortOutputDTO>> GetShortList()
         {
             var entities = await _productPropertyRepository.GetAll();
-            var result = _mapper.Map<List<OutputShortProductPropertyDTO>>(entities);
+            var result = _mapper.Map<List<ProductPropertyShortOutputDTO>>(entities);
             return result;
         }
 
@@ -55,36 +55,36 @@ namespace MusicShop.Application.Services
                 await _productPropertyRepository.Delete(entity);
         }
 
-        public async Task<OutputProductPropertyDTO> GetById(Guid id)
+        public async Task<ProductPropertyOutputDTO> GetById(Guid id)
         {
             var entity = await _productPropertyRepository.GetByIdWithSet(id);
-            var result = _mapper.Map<OutputProductPropertyDTO>(entity);
+            var result = _mapper.Map<ProductPropertyOutputDTO>(entity);
             return result;
         }
 
-        public async Task Update(UpdateProductPropertyDTO dto)
+        public async Task Update(ProductPropertyUpdateDTO dto)
         {
-            var existedEntity = await _productPropertyRepository.GetById(dto.Id);
-            _mapper.Map(dto, existedEntity);
+            var existingEntity = await _productPropertyRepository.GetById(dto.Id);
+            _mapper.Map(dto, existingEntity);
             
             if (dto.ValueType == Domain.Enums.PropertyValueType.Set && dto.Values.Any())
             {
               await  _productPropertySetRepository.DeleteAllByPropertyId(dto.Id);
               await _productPropertySetRepository.CreateMany(dto.Id, dto.Values); 
             }
-            await _productPropertyRepository.Update(existedEntity);
+            await _productPropertyRepository.Update(existingEntity);
         }
 
-        public async Task<PageModelDTO<OutputProductPropertyDTO>> GetPage(PaginationDTO paginationDTO)
+        public async Task<PageModelDTO<ProductPropertyOutputDTO>> GetPage(PaginationDTO paginationDTO)
         {
             var pages = await _productPropertyRepository.GetPage(paginationDTO);
-            var result = _mapper.Map<PageModelDTO<OutputProductPropertyDTO>>(pages);
+            var result = _mapper.Map<PageModelDTO<ProductPropertyOutputDTO>>(pages);
             return result;
         }
-        public async Task<List<OutputProductPropertyDTO>> GetProptiesByCategoryId(Guid id)
+        public async Task<List<ProductPropertyOutputDTO>> GetProptiesByCategoryId(Guid id)
         {
             var entities = await _productPropertyRepository.GetPropertiesByCategoryId(id);
-            var result = _mapper.Map<List<OutputProductPropertyDTO>>(entities);
+            var result = _mapper.Map<List<ProductPropertyOutputDTO>>(entities);
             return result;
         }
     }
