@@ -7,6 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.DependencyInjection;
+using MusicShop.WebAPI.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,6 +53,7 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddRepositories();
 builder.Services.AddServices();
+builder.Services.AddAppOptions();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
@@ -71,8 +73,11 @@ builder.Services
     {
         jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
         {
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("devSecretKey")),
-            ValidateIssuerSigningKey = true
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("TQvgjeABMPOwCycOqah5EQu5yyVjpmVG")),
+            ValidateIssuerSigningKey = true,
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ValidateLifetime = true
         };
     });
 
@@ -91,6 +96,8 @@ if (app.Environment.IsDevelopment())
 //    context.Database.EnsureDeleted();
 //    context.Database.EnsureCreated();
 //}
+
+app.UseMiddleware<UserCheckMiddleware>();
 
 app.UseHttpsRedirection();
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using MusicShop.Application.Interfaces.Services;
 using MusicShop.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,14 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace MusicShop.Application.Services
+namespace MusicShop.Infrastructure.Services
 {
-    public class TokenService
+    public class TokenService:ITokenService
     {
         public string GetToken(UserEntity user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("devSecretKey"));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("TQvgjeABMPOwCycOqah5EQu5yyVjpmVG"));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var claims = new Claim[]
             {
@@ -27,7 +28,8 @@ namespace MusicShop.Application.Services
             };
             var token = new JwtSecurityToken(
                 claims: claims,
-                signingCredentials: credentials
+                signingCredentials: credentials,
+                expires: DateTime.UtcNow.AddMonths(1)
             );
             return tokenHandler.WriteToken(token);
         }

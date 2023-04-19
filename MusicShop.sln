@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicShop.Infrastructure", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicShop.Persistance", "MusicShop.Persistence\MusicShop.Persistance.csproj", "{55AAEEAA-FE37-4747-BE86-AE706EBABF35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicShop.WebAPI", "MusicShop.WebAPI\MusicShop.WebAPI.csproj", "{1BD6C32B-6E72-4FC3-80C3-CCFE77F53457}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicShop.WebAPI", "MusicShop.WebAPI\MusicShop.WebAPI.csproj", "{1BD6C32B-6E72-4FC3-80C3-CCFE77F53457}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using MusicShop.Application.Interfaces.Services;
 using MusicShop.Application.Services;
+using MusicShop.Infrastructure.Services;
+using MusicShop.Domain.Options;
 
 namespace MusicShop.WebAPI.Extensions
 { 
@@ -41,6 +43,13 @@ namespace MusicShop.WebAPI.Extensions
             services.AddScoped<IProductPropertyService, ProductPropertyService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IAuthService, AuthService>();
+        }
+
+        public static void AddAppOptions(this IServiceCollection services)
+        {
+            services.AddScoped<UserData>();
         }
     }
 }
