@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MusicShop.Application.DTO.PageModels;
 using MusicShop.Application.DTO.Product;
 using MusicShop.Application.Interfaces.Repositories;
 using MusicShop.Application.Interfaces.Services;
@@ -40,12 +41,25 @@ namespace MusicShop.Application.Services
             await _productPropertyValues.DeleteAllByProductId(existingEntity.Id);
             await _productRepository.Update(existingEntity);
         }
-        public async Task<ProductOutputDTO> GetById(Guid id)
+        public async Task<ProductDetailedOutputDTO> GetById(Guid id)
         {
-            var entity = await _productRepository.GetById(id);
-            var result = _mapper.Map<ProductOutputDTO>(entity);
+            var entity = await _productRepository.GetDetailedById(id);
+            var result = _mapper.Map<ProductDetailedOutputDTO>(entity);
             return result;
         }
+        public async Task<PageModelDTO<ProductOutputDTO>> GetPage(PaginationDTO dto)
+        {
+            var pages = await _productRepository.GetPage(dto);
+            var result = _mapper.Map<PageModelDTO<ProductOutputDTO>>(pages);
+            return result;
+        }
+        public async Task Delete(Guid id)
+        {
+            var entity = await _productRepository.GetById(id);
+            if (entity != null)
+               await _productRepository.Delete(entity);
+        }
+            
         
     }
 }

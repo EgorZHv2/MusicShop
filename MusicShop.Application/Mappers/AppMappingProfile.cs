@@ -8,9 +8,11 @@ using MusicShop.Application.DTO.ProductPropertySet;
 using MusicShop.Application.DTO.ProductPropertyValue;
 using MusicShop.Application.DTO.Review;
 using MusicShop.Domain.Entities;
+using MusicShop.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,6 +41,19 @@ namespace MusicShop.Application.Mappers
             CreateMap<ProductPropertyValueDTO,ProductPropertyValueEntity>().ReverseMap();
             CreateMap<ProductCreateDTO, ProductEntity>();
             CreateMap<ProductUpdateDTO, ProductEntity>();
+            CreateMap<ProductEntity, ProductDetailedOutputDTO>()
+                .ForMember(e => e.CategoryName, opt => opt.MapFrom(e => e.Category.Name))
+                .ForMember(e => e.Properties, opt => opt
+                    .MapFrom(e => e.ProductPropertiesValues
+                        .Select(e => new ProductPropertyValuetListOutputDTO
+                        {
+                            PropertyName = e.Property.Name,
+                            PropertyValue = GetPropertyValue(e)
+                        
+                        })));
+            CreateMap<ProductEntity, ProductOutputDTO>()
+                .ForMember(e=>e.CategoryName,opt => opt.MapFrom(e=>e.Category.Name));
+            CreateMap<PageModelDTO<ProductEntity>,PageModelDTO<ProductOutputDTO>>();
 
             //User maps
             CreateMap<RegisterDTO, UserEntity>();
@@ -50,6 +65,17 @@ namespace MusicShop.Application.Mappers
             CreateMap<ReviewEntity,ReviewListOutputDTO>();
             CreateMap<PageModelDTO<ReviewEntity>, PageModelDTO<ReviewListOutputDTO>>();
          
+        }
+        private string GetPropertyValue(ProductPropertyValueEntity entity)
+        {
+            switch (entity.Property.ValueType)
+            {
+                case PropertyValueType.Text: return entity.TextValue;
+                case PropertyValueType.Numeric: return entity.NumericValue.ToString();
+                case PropertyValueType.Bool: return entity.BoolValue.ToString();
+                case PropertyValueType.Set: return entity.ProductPropertySetValue.Value;
+                default: return string.Empty;
+            }
         }
 
     }

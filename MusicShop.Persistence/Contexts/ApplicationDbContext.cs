@@ -21,7 +21,7 @@ namespace MusicShop.Persistance.Contexts
         public DbSet<OrderEntity> Orders { get; set; }
         public DbSet<AddressEntity> Addresses { get; set; }
         public DbSet<ProductPropertySetEntity> ProductPropertiesSets { get; set; }
-        //public DbSet<ReviewEntity> Reviews { get; set; }
+        public DbSet<ReviewEntity> Reviews { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) 
         {
           
