@@ -2,6 +2,7 @@
 using MusicShop.Application.DTO.Category;
 using MusicShop.Application.DTO.PageModels;
 using MusicShop.Application.DTO.ProductProperty;
+using MusicShop.Application.Exceptions;
 using MusicShop.Application.Interfaces.Repositories;
 using MusicShop.Application.Interfaces.Services;
 using MusicShop.Domain.Entities;
@@ -46,6 +47,10 @@ namespace MusicShop.Application.Services
         public async Task Update(CategoryUpdateDTO dto)
         {
             var existingEntity = await _categoryRepository.GetById(dto.Id);
+            if(existingEntity == null)
+            {
+                throw new CategoryNotFoundException();
+            }
             _mapper.Map(dto, existingEntity);
             await _categoryProductProperty.DeleteAllByCategoryId(dto.Id);
             if (dto.PropertiesIds.Any())
@@ -72,6 +77,10 @@ namespace MusicShop.Application.Services
         public async Task<CategoryOutputDTO> GetById(Guid id)
         {
             var entity = await _categoryRepository.GetByIdWithProperties(id);
+            if(entity == null)
+            {
+                throw new CategoryNotFoundException();
+            }
             var result = _mapper.Map<CategoryOutputDTO>(entity);
             return result;
         }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DevOne.Security.Cryptography.BCrypt;
 using MusicShop.Application.DTO.Identity;
+using MusicShop.Application.Exceptions;
 using MusicShop.Application.Interfaces.Repositories;
 using MusicShop.Application.Interfaces.Services;
 using MusicShop.Domain.Entities;
@@ -19,29 +20,32 @@ namespace MusicShop.Infrastructure.Services
         private readonly ITokenService _tokenService;
         private readonly IMapper _mapper;
         private readonly UserData _userData;
+        private readonly IBasketRepository _basketRepository;
         public AuthService
         (
             IUserRepository userRepository,
             ITokenService tokenService,
             IMapper mapper,
-            UserData userData
-        ) 
+            UserData userData,
+            IBasketRepository basketRepository
+        )
         {
             _userRepository = userRepository;
             _tokenService = tokenService;
             _mapper = mapper;
             _userData = userData;
+            _basketRepository = basketRepository;
         }
         public async Task<string> Login(LoginDTO dto)
         {
             var user = await _userRepository.GetUserByEmail(dto.Email);
             if(user == null)
             {
-                throw new Exception();
+                throw new WrongEmailAddressException();
             }
             if (!BCryptHelper.CheckPassword(dto.Password, user.PasswordHash))
             {
-                throw new Exception();
+                throw new WrongPasswordException();
             }
             var result = _tokenService.GetToken(user);
             return result;
@@ -51,23 +55,25 @@ namespace MusicShop.Infrastructure.Services
             var existingUser = await _userRepository.GetUserByEmail(dto.Email);
             if(existingUser != null)
             {
-                throw new Exception();
+                throw new EmailALreadyInUseException();
             }
             string salt = BCryptHelper.GenerateSalt(6);
             var user = _mapper.Map<UserEntity>(dto);
             user.PasswordHash = BCryptHelper.HashPassword(dto.Password, salt);
-            await _userRepository.Create(user);
+            var userId = await _userRepository.Create(user);
+            await _basketRepository.Create(new BasketEntity { UserId = userId });
+
         }
          public async Task ChangePassword(ChangePasswordDTO dto)
         {
             var user = await _userRepository.GetById(_userData.Id);
             if(user == null)
             {
-                throw new Exception();
+                throw new UserNotFoundException();
             }
             if (!BCryptHelper.CheckPassword(dto.OldPassword, user.PasswordHash))
             {
-                throw new Exception();
+                throw new WrongPasswordException();
             }
             string salt = BCryptHelper.GenerateSalt(6);      
             user.PasswordHash = BCryptHelper.HashPassword(dto.Password, salt);

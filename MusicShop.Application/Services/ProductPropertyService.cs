@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MusicShop.Application.DTO.PageModels;
 using MusicShop.Application.Interfaces.Services;
+using MusicShop.Application.Exceptions;
 
 namespace MusicShop.Application.Services
 {
@@ -58,6 +59,10 @@ namespace MusicShop.Application.Services
         public async Task<ProductPropertyOutputDTO> GetById(Guid id)
         {
             var entity = await _productPropertyRepository.GetByIdWithSet(id);
+            if(entity == null)
+            {
+                throw new ProductPropertyNotFoundException();
+            }
             var result = _mapper.Map<ProductPropertyOutputDTO>(entity);
             return result;
         }
@@ -65,11 +70,14 @@ namespace MusicShop.Application.Services
         public async Task Update(ProductPropertyUpdateDTO dto)
         {
             var existingEntity = await _productPropertyRepository.GetById(dto.Id);
+            if(existingEntity == null)
+            {
+                throw new ProductPropertyNotFoundException();
+            }
             _mapper.Map(dto, existingEntity);
-            
+            await  _productPropertySetRepository.DeleteAllByPropertyId(dto.Id);
             if (dto.ValueType == Domain.Enums.PropertyValueType.Set && dto.Values.Any())
             {
-              await  _productPropertySetRepository.DeleteAllByPropertyId(dto.Id);
               await _productPropertySetRepository.CreateMany(dto.Id, dto.Values); 
             }
             await _productPropertyRepository.Update(existingEntity);
@@ -83,6 +91,7 @@ namespace MusicShop.Application.Services
         }
         public async Task<List<ProductPropertyOutputDTO>> GetProptiesByCategoryId(Guid id)
         {
+
             var entities = await _productPropertyRepository.GetPropertiesByCategoryId(id);
             var result = _mapper.Map<List<ProductPropertyOutputDTO>>(entities);
             return result;

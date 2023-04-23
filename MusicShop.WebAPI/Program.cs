@@ -8,12 +8,19 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.DependencyInjection;
 using MusicShop.WebAPI.Middleware;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
+using MusicShop.Domain.Resources.Localizations;
+
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddLocalization();
+builder.Services.AddControllers().AddMvcLocalization();
 
-builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -97,6 +104,14 @@ if (app.Environment.IsDevelopment())
 //    context.Database.EnsureCreated();
 //}
 
+app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("ru"),
+                SupportedCultures = new[] {new CultureInfo("en"),new CultureInfo("ru")},
+                SupportedUICultures = new[] {new CultureInfo("en"),new CultureInfo("ru")}
+            });
+
+app.UseMiddleware<ErrorHandlingMiddleware>();
 app.UseMiddleware<UserCheckMiddleware>();
 
 app.UseHttpsRedirection();

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MusicShop.Application.DTO.PageModels;
 using MusicShop.Application.DTO.Product;
+using MusicShop.Application.Exceptions;
 using MusicShop.Application.Interfaces.Repositories;
 using MusicShop.Application.Interfaces.Services;
 using MusicShop.Domain.Entities;
@@ -37,6 +38,10 @@ namespace MusicShop.Application.Services
         public async Task Update(ProductUpdateDTO dto)
         {
             var existingEntity = await _productRepository.GetById(dto.Id);
+            if(existingEntity == null) 
+            {
+                throw new ProductNotFoundException();
+            }
             _mapper.Map(dto, existingEntity);
             await _productPropertyValues.DeleteAllByProductId(existingEntity.Id);
             await _productRepository.Update(existingEntity);
@@ -44,6 +49,10 @@ namespace MusicShop.Application.Services
         public async Task<ProductDetailedOutputDTO> GetById(Guid id)
         {
             var entity = await _productRepository.GetDetailedById(id);
+            if(entity == null) 
+            {
+                throw new ProductNotFoundException();
+            }
             var result = _mapper.Map<ProductDetailedOutputDTO>(entity);
             return result;
         }

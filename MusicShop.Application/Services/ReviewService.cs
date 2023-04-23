@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MusicShop.Application.DTO.PageModels;
 using MusicShop.Application.DTO.Review;
+using MusicShop.Application.Exceptions;
 using MusicShop.Application.Interfaces.Repositories;
 using MusicShop.Application.Interfaces.Services;
 using MusicShop.Domain.Entities;
@@ -41,6 +42,10 @@ namespace MusicShop.Application.Services
          public async Task Update(ReviewUpdateDTO dto)
         {
             var existingEntity = await _reviewRepository.GetById(dto.Id);
+            if(existingEntity == null)
+            {
+                throw new ReviewNotFoundException();
+            }
             _mapper.Map(dto, existingEntity);
              await _reviewRepository.Update(existingEntity);
            
@@ -48,6 +53,10 @@ namespace MusicShop.Application.Services
         public async Task<ReviewOutputDTO> GetById(Guid id)
         {
             var entity = await _reviewRepository.GetById(id);
+            if(entity == null)
+            {
+                throw new ReviewNotFoundException();
+            }
             var result = _mapper.Map<ReviewOutputDTO>(entity);
             return result;
         }
