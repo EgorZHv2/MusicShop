@@ -26,10 +26,7 @@ namespace MusicShop.Persistance.Contexts
         {
           
         }
-        public ApplicationDbContext()
-        {
-          Database.Migrate();
-        }
+       
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

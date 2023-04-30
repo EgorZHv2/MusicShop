@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MusicShop.Application.DTO.Address;
 using MusicShop.Application.DTO.Category;
 using MusicShop.Application.DTO.Identity;
 using MusicShop.Application.DTO.PageModels;
@@ -64,7 +65,10 @@ namespace MusicShop.Application.Mappers
             CreateMap<ReviewEntity, ReviewOutputDTO>();
             CreateMap<ReviewEntity,ReviewListOutputDTO>();
             CreateMap<PageModelDTO<ReviewEntity>, PageModelDTO<ReviewListOutputDTO>>();
-         
+
+            //Address maps
+            CreateMap<AddressCreateDTO, AddressEntity>();
+            CreateMap<AddressEntity, AddressOutputDTO>();
         }
         private string GetPropertyValue(ProductPropertyValueEntity entity)
         {
