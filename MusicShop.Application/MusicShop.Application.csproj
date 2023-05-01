@@ -21,4 +21,8 @@
     <ProjectReference Include="..\MusicShop.Domain\MusicShop.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTO\PageModels\Filters\" />
+  </ItemGroup>
+
 </Project>

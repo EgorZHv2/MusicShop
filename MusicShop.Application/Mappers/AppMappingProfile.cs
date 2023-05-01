@@ -2,6 +2,7 @@
 using MusicShop.Application.DTO.Address;
 using MusicShop.Application.DTO.Category;
 using MusicShop.Application.DTO.Identity;
+using MusicShop.Application.DTO.Order;
 using MusicShop.Application.DTO.PageModels;
 using MusicShop.Application.DTO.Product;
 using MusicShop.Application.DTO.ProductProperty;
@@ -69,6 +70,23 @@ namespace MusicShop.Application.Mappers
             //Address maps
             CreateMap<AddressCreateDTO, AddressEntity>();
             CreateMap<AddressEntity, AddressOutputDTO>();
+
+            //Order maps
+            CreateMap<OrderCreateDTO, OrderEntity>();
+            CreateMap<OrderUpdateDTO, OrderEntity>();
+            CreateMap<OrderEntity, OrderOutputDTO>()
+                .ForMember(e => e.ProductName, opt => opt.MapFrom(e => e.Product.Name))
+                .ForMember(e => e.ProductPrice, opt => opt.MapFrom(e => e.Product.Price));
+            CreateMap<PageModelDTO<OrderEntity>, PageModelDTO<OrderOutputDTO>>();
+            CreateMap<OrderEntity, OrderDetailedOutputDTO>()
+                .ForMember(e => e.ProductName, opt => opt.MapFrom(e => e.Product.Name))
+                .ForMember(e => e.ProductPrice, opt => opt.MapFrom(e => e.Product.Price))
+                .ForMember(e => e.Country, opt => opt.MapFrom(e => e.Address.Country))
+                .ForMember(e => e.Region, opt => opt.MapFrom(e => e.Address.Region))
+                .ForMember(e => e.City, opt => opt.MapFrom(e => e.Address.City))
+                .ForMember(e => e.Place, opt => opt.MapFrom(e => e.Address.Place))
+                .ForMember(e => e.Index, opt => opt.MapFrom(e => e.Address.Index));
+
         }
         private string GetPropertyValue(ProductPropertyValueEntity entity)
         {

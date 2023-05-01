@@ -48,6 +48,7 @@ namespace MusicShop.WebAPI.Extensions
             services.AddScoped<IReviewService,ReviewService>();
             services.AddScoped<IBasketService, BasketService>();
             services.AddScoped<IAddressService, AddressService>();
+            services.AddScoped<IOrderService, OrderService>();
         }
 
         public static void AddAppOptions(this IServiceCollection services)

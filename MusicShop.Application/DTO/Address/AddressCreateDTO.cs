@@ -9,8 +9,8 @@ namespace MusicShop.Application.DTO.Address
 {
     public class AddressCreateDTO
     {
-        
-        public string Country { get; set; } = "Россия";
+        [Required]
+        public string Country { get; set; } 
         [Required]
         public string Region { get; set; }
         [Required]
