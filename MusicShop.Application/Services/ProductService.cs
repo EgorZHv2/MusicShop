@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MusicShop.Application.DTO.Filters.Product;
 using MusicShop.Application.DTO.PageModels;
 using MusicShop.Application.DTO.Product;
 using MusicShop.Application.Exceptions;
@@ -56,9 +57,9 @@ namespace MusicShop.Application.Services
             var result = _mapper.Map<ProductDetailedOutputDTO>(entity);
             return result;
         }
-        public async Task<PageModelDTO<ProductOutputDTO>> GetPage(PaginationDTO dto)
+        public async Task<PageModelDTO<ProductOutputDTO>> GetPage(ProductFilter filter, PaginationDTO dto)
         {
-            var pages = await _productRepository.GetPage(dto);
+            var pages = await _productRepository.GetPage(filter,dto);
             var result = _mapper.Map<PageModelDTO<ProductOutputDTO>>(pages);
             return result;
         }

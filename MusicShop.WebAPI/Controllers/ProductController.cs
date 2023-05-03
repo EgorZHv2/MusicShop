@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MusicShop.Application.DTO.Filters.Product;
 using MusicShop.Application.DTO.PageModels;
 using MusicShop.Application.DTO.Product;
 using MusicShop.Application.Interfaces.Services;
@@ -39,10 +40,10 @@ namespace MusicShop.WebAPI.Controllers
             await _productService.Delete(id);
             return Ok();
         }
-        [HttpGet("get-page")]
-        public async Task<IActionResult> GetPage([FromQuery] PaginationDTO dto)
+        [HttpPost("get-page")]
+        public async Task<IActionResult> GetPage([FromBody]ProductFilter filter ,[FromQuery] PaginationDTO dto)
         {
-            var result = await _productService.GetPage(dto);
+            var result = await _productService.GetPage(filter,dto);
             return Ok(result);
         }
     }

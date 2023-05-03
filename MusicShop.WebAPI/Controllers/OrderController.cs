@@ -29,7 +29,7 @@ namespace MusicShop.WebAPI.Controllers
             return Ok();
         }
         [HttpGet]
-        public async Task<IActionResult> GetPage(PaginationDTO dto)
+        public async Task<IActionResult> GetPage([FromQuery] PaginationDTO dto)
         {
             var result = await _orderService.GetPage(dto);
             return Ok(result);
