@@ -11,9 +11,8 @@ using MusicShop.WebAPI.Middleware;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using MusicShop.Domain.Resources.Localizations;
-
-
-
+using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -121,6 +120,16 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
+
 app.MapControllers();
+if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "files"))) 
+{
+    Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "files"));
+}
+app.UseStaticFiles(new StaticFileOptions()
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "files")),
+    RequestPath = new PathString( "/static")
+});
 
 app.Run();

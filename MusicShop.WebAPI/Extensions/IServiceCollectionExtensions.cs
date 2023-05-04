@@ -34,6 +34,8 @@ namespace MusicShop.WebAPI.Extensions
             services.AddScoped<IReviewRepository, ReviewRepository>();
             services.AddScoped<IUserFavoriteProductRepository, UserFavoriteProductRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IFileInfoRepository, FileInfoRepository>();
+            
             
         }
         public static void AddServices(this IServiceCollection services)
@@ -49,6 +51,7 @@ namespace MusicShop.WebAPI.Extensions
             services.AddScoped<IBasketService, BasketService>();
             services.AddScoped<IAddressService, AddressService>();
             services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IFileService, FileService>();
         }
 
         public static void AddAppOptions(this IServiceCollection services)
