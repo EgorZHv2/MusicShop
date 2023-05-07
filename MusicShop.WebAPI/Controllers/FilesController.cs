@@ -26,5 +26,11 @@ namespace MusicShop.WebAPI.Controllers
             var result = await _fileService.GetFilesUrisByParentId(id);
             return Ok(result);
         }
+        [HttpDelete("{id}/by-parent-id")]
+        public async Task<IActionResult> DeleteFilesByParentId(Guid id)
+        {
+            await _fileService.DeleteAllByParentEntityId(id);
+            return Ok();
+        }
     }
 }
