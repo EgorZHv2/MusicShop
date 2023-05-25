@@ -21,6 +21,6 @@ namespace MusicShop.Application.Interfaces.Services
         Task<PageModelDTO<ProductPropertyOutputDTO>> GetPage(PaginationDTO paginationDTO);
         Task Update(ProductPropertyUpdateDTO dto);
         Task<ProductPropertyOutputDTO> GetById(Guid id);
-        Task<List<ProductPropertyOutputDTO>> GetProptiesByCategoryId(Guid id);
+        Task<List<ProductPropertyOutputDTO>> GetPropertiesByCategoryId(Guid id);
     }
 }

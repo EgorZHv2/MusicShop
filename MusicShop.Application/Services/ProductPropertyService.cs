@@ -89,7 +89,7 @@ namespace MusicShop.Application.Services
             var result = _mapper.Map<PageModelDTO<ProductPropertyOutputDTO>>(pages);
             return result;
         }
-        public async Task<List<ProductPropertyOutputDTO>> GetProptiesByCategoryId(Guid id)
+        public async Task<List<ProductPropertyOutputDTO>> GetPropertiesByCategoryId(Guid id)
         {
 
             var entities = await _productPropertyRepository.GetPropertiesByCategoryId(id);

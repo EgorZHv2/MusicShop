@@ -13,6 +13,8 @@ using System.Globalization;
 using MusicShop.Domain.Resources.Localizations;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Identity.Client;
+using MusicShop.Domain.Options.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +23,7 @@ builder.Services.AddLocalization();
 builder.Services.AddControllers()
     .AddMvcLocalization()
     .AddNewtonsoftJson();
+
   
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -61,15 +64,17 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddRepositories();
 builder.Services.AddServices();
-builder.Services.AddAppOptions();
+builder.Services.AddAppOptions(builder.Configuration);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseNpgsql(
-        "Host = localhost;Port = 5432; Database = MusicShopDB; UserId = postgres; Password = 1385620;"
-    );
+    options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQL"));
     options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 });
+
+var jwtConfiguration  = builder.Configuration
+    .GetSection("JwtTokenConfiguration")
+    .Get<JwtTokenConfiguration>();
 
 builder.Services
     .AddAuthentication(options =>
@@ -81,7 +86,7 @@ builder.Services
     {
         jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
         {
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("TQvgjeABMPOwCycOqah5EQu5yyVjpmVG")),
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfiguration.JwtAuthKey)),
             ValidateIssuerSigningKey = true,
             ValidateIssuer = false,
             ValidateAudience = false,

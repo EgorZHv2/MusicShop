@@ -12,6 +12,7 @@ using MusicShop.Application.Interfaces.Services;
 using MusicShop.Application.Services;
 using MusicShop.Infrastructure.Services;
 using MusicShop.Domain.Options;
+using MusicShop.Domain.Options.Configurations;
 
 namespace MusicShop.WebAPI.Extensions
 { 
@@ -54,9 +55,10 @@ namespace MusicShop.WebAPI.Extensions
             services.AddScoped<IFileService, FileService>();
         }
 
-        public static void AddAppOptions(this IServiceCollection services)
+        public static void AddAppOptions(this IServiceCollection services,IConfiguration configuration)
         {
             services.AddScoped<UserData>();
+            services.Configure<JwtTokenConfiguration>(configuration.GetSection("JwtTokenConfiguration"));
         }
     }
 }

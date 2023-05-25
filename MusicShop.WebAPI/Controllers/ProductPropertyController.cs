@@ -55,7 +55,7 @@ namespace MusicShop.WebAPI.Controllers
         [HttpGet("by-category-id/{id}")]
         public async Task<IActionResult> GetByCategoryId(Guid id)
         {
-            var result = await _productPropertyService.GetProptiesByCategoryId(id);
+            var result = await _productPropertyService.GetPropertiesByCategoryId(Guid.NewGuid());
             return Ok(result);
         }
     }

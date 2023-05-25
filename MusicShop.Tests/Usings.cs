@@ -1,0 +1,14 @@
+global using Xunit;
+global using MusicShop.Application.DTO;
+global using MusicShop.Application.Exceptions;
+global using MusicShop.Application.Interfaces;
+global using MusicShop.Application.Mappers;
+global using MusicShop.Application.Services;
+global using MusicShop.Domain.Entities;
+global using MusicShop.Domain.Enums;
+global using MusicShop.Domain.Options;
+global using MusicShop.Domain.Resources;
+global using MusicShop.Infrastructure.Services;
+global using MusicShop.Persistance.Configurations;
+global using MusicShop.Persistance.Contexts;
+global using MusicShop.Persistance.Repositories;
