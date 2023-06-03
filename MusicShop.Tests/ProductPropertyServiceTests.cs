@@ -21,7 +21,7 @@ namespace MusicShop.Tests
         }
 
         [Fact]
-        public async void Create()
+        public async Task Create()
         {
             var productPropertyRepository = new Mock<IProductPropertyRepository>();
             productPropertyRepository.Setup(e => e.Create(It.IsAny<ProductPropertyEntity>())).ReturnsAsync(Guid.NewGuid());
@@ -44,7 +44,7 @@ namespace MusicShop.Tests
         }
 
         [Fact]
-        public async void GetShortList()
+        public async Task GetShortList()
         {
             var productPropertyRepository = new Mock<IProductPropertyRepository>();
             productPropertyRepository.Setup(e => e.GetAll()).ReturnsAsync(new List<ProductPropertyEntity> { new ProductPropertyEntity(),new ProductPropertyEntity() });
@@ -55,7 +55,7 @@ namespace MusicShop.Tests
             Assert.IsType<List<ProductPropertyShortOutputDTO>>(result);
         }
         [Fact]
-        public async void Delete()
+        public async Task Delete()
         {
             var productPropertyRepository = new Mock<IProductPropertyRepository>();
            
@@ -68,7 +68,7 @@ namespace MusicShop.Tests
             Assert.True(service.Delete(Guid.NewGuid()).IsCompletedSuccessfully);
         }
         [Fact]
-        public async void GetById()
+        public async Task GetById()
         {
             var productPropertyRepository = new Mock<IProductPropertyRepository>();
             var guid = Guid.NewGuid();
@@ -85,7 +85,7 @@ namespace MusicShop.Tests
         }
 
         [Fact]
-        public async void GetByIdNotFoundException()
+        public async Task GetByIdNotFoundException()
         {
             var productPropertyRepository = new Mock<IProductPropertyRepository>();
          
@@ -98,7 +98,7 @@ namespace MusicShop.Tests
            
         }
         [Fact]
-        public async void UpdateNotFoundException()
+        public async Task UpdateNotFoundException()
         {
             var productPropertyRepository = new Mock<IProductPropertyRepository>();
             productPropertyRepository.Setup(e => e.GetById(It.IsAny<Guid>())).ReturnsAsync(()=>null);
@@ -109,7 +109,7 @@ namespace MusicShop.Tests
             await Assert.ThrowsAsync<ProductPropertyNotFoundException>(()=> service.Update(new  ProductPropertyUpdateDTO{ Id = Guid.NewGuid(),Name = "Name"}));
         }
         [Fact]
-        public async void GetPage()
+        public async Task GetPage()
         {
             var productPropertySetRepositury = new Mock<IProductPropertySetRepository>();
             var productPropertyRepository = new Mock<IProductPropertyRepository>();
@@ -124,7 +124,7 @@ namespace MusicShop.Tests
             Assert.IsType<PageModelDTO<ProductPropertyOutputDTO>>(result);
         }
         [Fact]
-        public async void GetProptiesByCategoryId()
+        public async Task GetProptiesByCategoryId()
         {
             var productPropertySetRepositury = new Mock<IProductPropertySetRepository>();
             var productPropertyRepository = new Mock<IProductPropertyRepository>();

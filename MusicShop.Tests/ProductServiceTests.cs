@@ -17,6 +17,7 @@ namespace MusicShop.Tests
     public class ProductServiceTests
     {
         private readonly IMapper _mapper;
+
         public ProductServiceTests() 
         { 
              var myProfile = new AppMappingProfile();
