@@ -1,0 +1,385 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin:0px;
+}
+
+
+/*Авторизация*/
+.sectioncontainer {
+    width: 70%;
+    margin: auto;
+}
+
+.indexheader {
+    font-family: 'Merriweather', serif;
+    font-size: 50px;
+    color: #333333;
+    margin-top: 0;
+    padding-top: 28px;
+    text-align: center;
+}
+
+.logincontainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+    .logincontainer input {
+        border: 1px solid #000000;
+        border-radius: 15px;
+        color: #000000;
+        height: 50px;
+        width: 50%;
+        padding: 15px;
+        margin: 20px 0px 5px ;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+    }
+    .logincontainer input[type=text]:focus, input[type=password]:focus {
+        background-color: #ddd;
+        outline: none;
+    }
+
+    .logincontainer label {
+        font-family: 'Lato',sans-serif;
+        font-style: normal;
+        font-size: 20px;
+        margin-top: 10px;
+        width: 100px;
+    }
+
+.loginsubmit {
+    border: 1px solid #000000;
+    background: #E85A4F;
+    border-radius: 10px;
+    font-size: 18px;
+    text-align: center;
+    color: #FFFFFF;
+    height: 50px;
+    width: 300px;
+    display: block;
+    margin: auto;
+}
+/*Конец описания авторизации*/
+
+/*Стилизация Главной страницы*/
+.indeximage {
+    width: 100%;
+    height: 600px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(/Resources/img/Backline.jpg);
+}
+
+.indeximagecontent {
+    width: 100%;
+    position: absolute;
+    top: 200px;
+        
+}
+
+.txtwelcome {
+    color: white;
+    font-size: 20px;
+    text-align:center;
+    
+}
+
+.txtinfo {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    font-size: 40px;
+    color: #FFFFFF;
+    text-align: center;
+    margin-top:80px;
+}
+
+.btnnext {
+    background-color: #E85A4F;
+    border-radius: 14px;
+    border: 1px black solid;
+    width: 270px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+    .btnnext a{
+        color:#ffffff;
+    }
+
+.btnhref {
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    align-items: center;
+    display: flex;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+/*Стилизация карточки товара*/
+#tovarcategory {
+    /*background-color: #EBEBEB;*/
+    height: 600px;
+}
+
+.indexheadergrey {
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    color: #BDBDBD;
+    margin-top: 0;
+    padding-top: 100px;
+}
+
+.tovarscontainer {
+    display: flex;
+}
+
+.tovarcategorycard {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 350px;
+    height: 360px;
+    background-image: url(/Resources/img/tovarcard.png);
+    transition: ease-in-out .5s;
+    display: table;
+}
+
+    .tovarcategorycard:hover {
+        /*opacity: 0.5;*/
+        background-image: url(/Resources/img/tovarcard.png);
+        color: #FFFFFF;
+    }
+
+        .tovarcategorycard:hover a {
+            color: #ffffff;
+        }
+
+.tovarcardheader {
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    color: #FFFFFF;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+}
+
+.tovarcategorycard1 {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 350px;
+    height: 360px;
+    background-image: url(/Resources/img/tovarcard1.png);
+    transition: ease-in-out .5s;
+    display: table;
+}
+
+    .tovarcategorycard1:hover {
+        background-image: url(/Resources/img/tovarcard1.png);
+        color: #FFFFFF;
+    }
+
+        .tovarcategorycard1:hover a {
+            color: #ffffff;
+        }
+
+.tovarcardheader1 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    color: #FFFFFF;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+}
+
+.tovarcategorycard2 {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 350px;
+    height: 360px;
+    background-image: url(/Resources/img/tovarcard2.png);
+    transition: ease-in-out .5s;
+    display: table;
+}
+
+    .tovarcategorycard2:hover {
+        background-image: url(/Resources/img/tovarcard2.png);
+        color: #FFFFFF;
+    }
+
+        .tovarcategorycard2:hover a {
+            color: #ffffff;
+        }
+
+.tovarcardheader2 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    color: #FFFFFF;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+}
+
+/*Окончание стилизации карточки товара*/
+
+/*Стилизация блока партнёров*/
+#ourpartners {
+    /*background-color: #EBEBEB;*/
+    height: 400px;
+}
+
+.indexheaderblack {
+    font-family: 'Merriweather', serif;
+    font-size: 48px;
+    color: #333333;
+    margin-top: 0;
+    padding-top: 50px;
+    text-align: center;
+}
+
+.partnerscontainer {
+    width: 100%;
+    display: flex;
+    margin: auto;
+}
+
+    .partnerscontainer img {
+        width: 25%;
+    }
+/*Окончание стилизация партнёров*/
+
+/*Стилизация отзывов*/
+#reviews {
+    /*background-color: #F9F9F9;*/
+    height: 600px;
+}
+
+.reviewcontainer {
+    width: 100%;
+    overflow: hidden;
+}
+
+    .reviewcontainer input {
+        display: none;
+    }
+
+.reviews {
+    display: flex;
+    width: 100%;
+    transition: ease-in-out 2s;
+}
+
+.review {
+    width: 100%;
+    flex-shrink: 0;
+    background: #EBEBEB;
+    transition: all 0.5s;
+}
+
+.reviewtext {
+    font-size: 18px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    margin: 50px;
+}
+
+.reviewprofile {
+    margin: 50px;
+    display: flex;
+}
+
+    .reviewprofile h1 {
+        font-size: 18px;
+        font-family: 'Lato', sans-serif;
+        font-weight: 900;
+        padding-left: 20px;
+    }
+
+    .reviewprofile span {
+        font-size: 14px;
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+        color: #4F4F4F;
+        padding-left: 20px;
+    }
+
+/*Слайдер*/.reviewcontrols {
+                margin: 20px auto;
+                width: fit-content;
+            }
+
+    #slaid1:checked ~ .reviews {
+        transform: translate(0);
+    }
+
+    #slaid2:checked ~ .reviews {
+        transform: translateX(-100%);
+    }
+
+    #slaid3:checked ~ .reviews {
+        transform: translateX(-200%);
+    }
+
+    #slaid4:checked ~ .reviews {
+        transform: translateX(-300%);
+    }
+
+    #slaid1:checked ~ .reviewcontrols label[for="slaid1"] {
+        opacity: 1;
+    }
+
+    #slaid2:checked ~ .reviewcontrols label[for="slaid2"] {
+        opacity: 1;
+    }
+
+    #slaid3:checked ~ .reviewcontrols label[for="slaid3"] {
+        opacity: 1;
+    }
+
+    #slaid4:checked ~ .reviewcontrols label[for="slaid4"] {
+        opacity: 1;
+    }
+
+    .reviewcontrols label {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        margin: 0 30px;
+        border-radius: 50%;
+        opacity: 0.4;
+        background-color: #005FA3;
+    }
+/*Окончание стилизации блока отзывов*/

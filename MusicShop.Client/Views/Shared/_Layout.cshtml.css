@@ -1,0 +1,195 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+
+header {
+    /* background-color: #F9F9F9; */
+    height: 110px;
+    width: 100%;
+    display: flex;
+}
+
+.headernavblock {
+    background-color: #D8C3A5;
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.headercontacttext {
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.headerblock {
+    width: 100%;
+    height: 100%;
+    display:flex;
+}
+
+.headerblock1 {
+    width: 30%;
+    height: 100%;
+}
+
+    .logotext {
+        text-align: center;
+        margin: auto;
+        color: #000000;
+        font-size: 36px;
+        font-weight: 900;
+        font-family: 'Merriweather', serif;
+    }
+
+.headerblock2 {
+    width: 70%;
+    height: 100%;
+    margin-top:20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.headerhreftext {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #222222;
+    
+}
+
+
+/*Подвал*/
+footer {
+    margin-top:50px;
+    background-color: #D8C3A5;
+    height: 100%;
+}
+
+    footer .sectioncontainer {
+        padding-top: 10px;
+        display: flex;
+    }
+
+.ourcontacts {
+    width: 70%;
+}
+
+    .ourcontacts p {
+        color: #1F1F1F;
+        font-size: 40px;
+        font-family: 'Merriweather', serif;
+    }
+
+    .ourcontacts span {
+        color: #1F1F1F;
+        font-size: 18px;
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+    }
+
+.footercontacts {
+    display: flex;
+    width: 100%;
+    padding-top: 100px;
+}
+
+    .footercontacts img {
+        height: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+.footercontacttext {
+    font-family: 'Lato',sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 21px;
+    color: #1F1F1F;
+}
+
+.sendmessage {
+    width: 50%;
+    padding-top: 60px;
+}
+
+.footerlabelcontainer {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.footerlabel {
+    font-family: 'Lato',sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 22px;
+    color: #1F1F1F;
+    width: 40%;
+}
+
+.footerinputcontainer {
+    display: flex;
+    justify-content: flex-start;
+}
+
+    .footerinputcontainer input {
+        padding-top: 10px;
+        width: 40%;
+        border: none;
+        color: #000000;
+        border-bottom: 3px black solid;
+        background: none;
+        font-family: 'Lato',sans-serif;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 30px;
+        resize: none;
+        text-decoration: none;
+    }
+
+.message {
+    margin-top: 20px;
+    width: 100%;
+    position: relative;
+}
+
+.messagearea {
+    margin-top: 10px;
+    height: 100px;
+    border: none;
+    color: #000000;
+    border-bottom: 3px black solid;
+    background: none;
+    font-family: 'Lato',sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 21px;
+    resize: none;
+    width: 92%;
+    text-decoration: none;
+}
+
+.btncontainer {
+    margin-top: 10px;
+    width: 93%;
+    display: flex;
+    justify-content: end;
+}
+
+.sendmessagebtn {
+    background-color: #E85A4F;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+    color: #FFFFFF;
+    height: 60px;
+    border-radius: 15px;
+    border: 1px solid #000000;
+}

@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MusicShop.Client</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MusicShop.Client.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <div class="headernavblock">
+            <div><img src="/Resources/icons/FooterPhone.png"></div>
+            <div class="headercontacttext">8 (888) 888-88-88</div>
+            <div><img src="/Resources/icons/Clock.png"></div>
+            <div class="headercontacttext">Пн-Пт 10:00-18:00</div>
+            <div><img src="/Resources/icons/FooterEmail.png"></div>
+            <div class="headercontacttext">ket@mail.ru</div>
+            <div><img src="/Resources/icons/Placeholder.png"></div>
+            <div class="headercontacttext">г.Кострома</div>
+        </div>
+
+        <div class="headerblock">
+            <div class="headerblock1">
+                <p class="logotext">MusicShop</p>
+            </div>
+
+            <div class="headerblock2">
+                <a href="/Home/Index" class="headerhreftext">Главная</a>
+                <a href="/Home/Catalog" class="headerhreftext">Каталог</a>
+                <a href="/Home/About" class="headerhreftext">О нас</a>
+                <a href="/Home/Contact" class="headerhreftext">Контакты</a>
+                <a href="/Home/Login" class="headerhreftext">Войти/Зарегистрироваться</a>
+            </div>
+        </div>
+    </header>
+    <div class="w-100 p-0 m-0">
+        <main role="main" class="pb-3 w-100">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer id="footer">
+        <div class="sectioncontainer">
+            <div class="ourcontacts">
+                <p>Связь с нами</p>
+                <span>У вас остались вопросы? Напишите нам - мы ответим в ближайшее время!</span>
+                <div class="footercontacts">
+                    <div><img src="/Resources/icons/FooterPhone.png"></div>
+                    <div class="footercontacttext">8 (888) 888-88-88</div>
+                    <div><img src="/Resources/icons/FooterEmail.png"></div>
+                    <div class="footercontacttext">ket@mail.ru</div>
+                </div>
+
+            </div>
+            <div class="sendmessage">
+                <form method="post" asp-controller="Home" asp-action="Index">
+                    <div class="footerlabelcontainer">
+                        <label class="footerlabel">Имя</label>
+                        <label class="footerlabel" style="margin-left: 10%;">Фамилия</label>
+                    </div>
+                    <div class="footerinputcontainer">
+                        <input name="FirstName" type="text" placeholder="Введите имя">
+                        <input name="LastName" style="margin-left: 10%;" type="text" placeholder="Введите фамилию">
+                    </div>
+                    <div class="message">
+                        <div><label class="footerlabel">Сообщение</label></div>
+                        <div><textarea name="MessageText" class="messagearea" placeholder="Ваше сообщение"></textarea></div>
+                        <div class="btncontainer">
+                            <button class="sendmessagebtn">Отправить сообщение</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/script.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
