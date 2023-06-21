@@ -102,13 +102,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-//using (var scope = app.Services.CreateScope())
-//{
-//    var provider = scope.ServiceProvider;
-//    var context = provider.GetRequiredService<ApplicationDbContext>();
-//    context.Database.EnsureDeleted();
-//    context.Database.EnsureCreated();
-//}
+using (var scope = app.Services.CreateScope())
+{
+    var provider = scope.ServiceProvider;
+    var context = provider.GetRequiredService<ApplicationDbContext>();
+    context.Database.EnsureCreated();
+}
 
 app.UseRequestLocalization(new RequestLocalizationOptions
             {

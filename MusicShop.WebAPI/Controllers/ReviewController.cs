@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using MusicShop.Application.DTO.PageModels;
 using MusicShop.Application.DTO.Review;
 using MusicShop.Application.Interfaces.Services;
+using MusicShop.Domain.Enums;
 
 namespace MusicShop.WebAPI.Controllers
 {
@@ -39,7 +40,7 @@ namespace MusicShop.WebAPI.Controllers
             return Ok(result);
         }
         [HttpGet("by-user")]
-        [Authorize]
+        [Authorize(Roles = $"{nameof(UserRole.Admin)},{nameof(UserRole.Moderator)}")]
         public async Task<IActionResult> GetPageByUserId([FromQuery] PaginationDTO pagination)
         {
             var result = await _reviewService.GetPageByUserId(pagination);

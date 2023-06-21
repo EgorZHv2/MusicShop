@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MusicShop.Application.DTO.Category;
 using MusicShop.Application.DTO.PageModels;
 using MusicShop.Application.Interfaces.Services;
+using MusicShop.Domain.Enums;
 
 namespace MusicShop.WebAPI.Controllers
 {
@@ -16,18 +18,21 @@ namespace MusicShop.WebAPI.Controllers
             _categoryService = categoryService;
         }
         [HttpPost]
+        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
         public async Task<IActionResult> Create(CategoryCreateDTO dto)
         {
             var result = await _categoryService.Create(dto);
             return Ok(result);
         }
         [HttpPut]
+        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
         public async Task<IActionResult> Update(CategoryUpdateDTO dto)
         {
             await _categoryService.Update(dto);
             return Ok();
         }
         [HttpDelete]
+        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             await _categoryService.Delete(id);
@@ -40,6 +45,7 @@ namespace MusicShop.WebAPI.Controllers
             return Ok(result);
         }
         [HttpGet("{id}")]
+        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
         public async Task<IActionResult> GetById(Guid id)
         {
             var result = await _categoryService.GetById(id);

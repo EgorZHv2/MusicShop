@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MusicShop.Application.DTO.Filters.Product;
 using MusicShop.Application.DTO.PageModels;
 using MusicShop.Application.DTO.Product;
 using MusicShop.Application.Interfaces.Services;
+using MusicShop.Domain.Enums;
 
 namespace MusicShop.WebAPI.Controllers
 {
@@ -17,12 +19,14 @@ namespace MusicShop.WebAPI.Controllers
             _productService = productService;
         }
         [HttpPost]
+        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
         public async Task<IActionResult> Create(ProductCreateDTO dto)
         {
             var result = await _productService.Create(dto);
             return Ok(result);
         }
         [HttpPut]
+        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
         public async Task<IActionResult> Update(ProductUpdateDTO dto)
         {
             await _productService.Update(dto);
@@ -35,6 +39,7 @@ namespace MusicShop.WebAPI.Controllers
             return Ok(result);
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             await _productService.Delete(id);
