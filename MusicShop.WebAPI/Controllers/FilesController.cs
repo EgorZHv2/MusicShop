@@ -15,6 +15,14 @@ namespace MusicShop.WebAPI.Controllers
         {
             _fileService = fileService;
         }
+        /// <summary>
+        /// Добавление файла
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> Create([FromForm] FileCreateDTO dto)
@@ -22,6 +30,14 @@ namespace MusicShop.WebAPI.Controllers
             await _fileService.Create(dto);
             return Ok();
         }
+        /// <summary>
+        /// Получение ссылок на файлы по Id родительской сущности
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
         [HttpGet("{id}")]
         [Authorize]
         public async Task<IActionResult> GetFilesUrisByParentId(Guid id)
@@ -29,6 +45,14 @@ namespace MusicShop.WebAPI.Controllers
             var result = await _fileService.GetFilesUrisByParentId(id);
             return Ok(result);
         }
+        /// <summary>
+        /// Удаление файлов по Id родительской сущности
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
         [HttpDelete("{id}/by-parent-id")]
         [Authorize]
         public async Task<IActionResult> DeleteFilesByParentId(Guid id)

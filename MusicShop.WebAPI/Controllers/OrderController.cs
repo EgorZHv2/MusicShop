@@ -17,7 +17,14 @@ namespace MusicShop.WebAPI.Controllers
         {
             _orderService = orderService;
         }
-
+        /// <summary>
+        /// Создание заказа
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> Create(OrderCreateDTO dto)
@@ -25,6 +32,14 @@ namespace MusicShop.WebAPI.Controllers
             var result = await _orderService.Create(dto);
             return Ok(result);
         }
+        /// <summary>
+        /// Изменение статуса заказа
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
         [HttpPatch]
         [Authorize(Roles = $"{nameof(UserRole.Admin)},{nameof(UserRole.Moderator)}")]
         public async Task<IActionResult> UpdateOrderStatus(OrderUpdateDTO dto)
@@ -32,6 +47,14 @@ namespace MusicShop.WebAPI.Controllers
             await _orderService.UpdateOrderStatus(dto);
             return Ok();
         }
+        /// <summary>
+        /// Получение страницы заказов
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> GetPage([FromQuery] PaginationDTO dto)
@@ -39,6 +62,14 @@ namespace MusicShop.WebAPI.Controllers
             var result = await _orderService.GetPage(dto);
             return Ok(result);
         }
+        /// <summary>
+        /// Получение заказа по Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
         [HttpGet("{id}")]
         [Authorize]
         public async Task<IActionResult> GetById(Guid id)
@@ -46,6 +77,14 @@ namespace MusicShop.WebAPI.Controllers
             var result = await _orderService.GetById(id);
             return Ok(result);
         }
+        /// <summary>
+        /// Удаление заказа
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
         [HttpDelete("{id}")]
         [Authorize]
         public async Task<IActionResult> Delete(Guid id)

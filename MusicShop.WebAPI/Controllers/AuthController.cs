@@ -15,7 +15,14 @@ namespace MusicShop.WebAPI.Controllers
         {
             _authService = authService;
         }
-
+        /// <summary>
+        /// Авторизация
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDTO model)
         {
@@ -23,12 +30,28 @@ namespace MusicShop.WebAPI.Controllers
             var result = await _authService.Login(model);
             return Ok(result);
         }
+        /// <summary>
+        /// Регистрация
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDTO model)
         {
             await _authService.Register(model);
             return Ok();
         }
+        /// <summary>
+        /// Смена пароля
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
         [HttpPatch("change-password")]
         [Authorize]
         public async Task<IActionResult> ChangePassword(ChangePasswordDTO model)

@@ -1,0 +1,426 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MusicShop.WebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:MusicShop.WebAPI.Controllers.AddressController.Create(MusicShop.Application.DTO.Address.AddressCreateDTO)">
+            <summary>
+            Создание адрес
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.AddressController.GetById(System.Guid)">
+            <summary>
+            Получение адреса по Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.AddressController.GetLastByUser">
+            <summary>
+            Получение адреса последнего заказа
+            </summary>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.AuthController.Login(MusicShop.Application.DTO.Identity.LoginDTO)">
+            <summary>
+            Авторизация
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.AuthController.Register(MusicShop.Application.DTO.Identity.RegisterDTO)">
+            <summary>
+            Регистрация
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.AuthController.ChangePassword(MusicShop.Application.DTO.Identity.ChangePasswordDTO)">
+            <summary>
+            Смена пароля
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.BasketController.AddProductToBasket(System.Guid)">
+            <summary>
+            Добавление товара в корзину
+            </summary>
+            <param name="productId"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.BasketController.RemoveProductFromBasket(System.Guid)">
+            <summary>
+            Удаление продукта из корзины
+            </summary>
+            <param name="productId"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.BasketController.ClearBasket">
+            <summary>
+            Очистка корзины
+            </summary>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.BasketController.GetProductsPage(MusicShop.Application.DTO.PageModels.PaginationDTO)">
+            <summary>
+            Получение страницы продуктов в корзине
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.CategoryController.Create(MusicShop.Application.DTO.Category.CategoryCreateDTO)">
+            <summary>
+            Создание категории
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.CategoryController.Update(MusicShop.Application.DTO.Category.CategoryUpdateDTO)">
+            <summary>
+            Изменение категории
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.CategoryController.Delete(System.Guid)">
+            <summary>
+            Удаление категории
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.CategoryController.GetPage(MusicShop.Application.DTO.PageModels.PaginationDTO)">
+            <summary>
+            Получение страницы категорий
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.CategoryController.GetById(System.Guid)">
+            <summary>
+            Получение категории по Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.CategoryController.GetShort">
+            <summary>
+            Получение короткого списка категорий
+            </summary>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.FilesController.Create(MusicShop.Application.DTO.File.FileCreateDTO)">
+            <summary>
+            Добавление файла
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.FilesController.GetFilesUrisByParentId(System.Guid)">
+            <summary>
+            Получение ссылок на файлы по Id родительской сущности
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.FilesController.DeleteFilesByParentId(System.Guid)">
+            <summary>
+            Удаление файлов по Id родительской сущности
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.OrderController.Create(MusicShop.Application.DTO.Order.OrderCreateDTO)">
+            <summary>
+            Создание заказа
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.OrderController.UpdateOrderStatus(MusicShop.Application.DTO.Order.OrderUpdateDTO)">
+            <summary>
+            Изменение статуса заказа
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.OrderController.GetPage(MusicShop.Application.DTO.PageModels.PaginationDTO)">
+            <summary>
+            Получение страницы заказов
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.OrderController.GetById(System.Guid)">
+            <summary>
+            Получение заказа по Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.OrderController.Delete(System.Guid)">
+            <summary>
+            Удаление заказа
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.ProductController.Create(MusicShop.Application.DTO.Product.ProductCreateDTO)">
+            <summary>
+            Создание товара
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.ProductController.Update(MusicShop.Application.DTO.Product.ProductUpdateDTO)">
+            <summary>
+            Изменение товара
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.ProductController.GetById(System.Guid)">
+            <summary>
+            Получение товара по Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.ProductController.Delete(System.Guid)">
+            <summary>
+            Удаление товара
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.ProductController.GetPage(MusicShop.Application.DTO.Filters.Product.ProductFilter,MusicShop.Application.DTO.PageModels.PaginationDTO)">
+            <summary>
+            Получение страницы товаров
+            </summary>
+            <param name="filter"></param>
+            <param name="dto"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.ProductPropertyController.GetPage(MusicShop.Application.DTO.PageModels.PaginationDTO)">
+            <summary>
+            Получение страницы свойств товаров
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.ProductPropertyController.Create(MusicShop.Application.DTO.ProductProperty.ProductPropertyCreateDTO)">
+            <summary>
+            Создание свойства товара
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.ProductPropertyController.GetShort">
+            <summary>
+            Получение короткого списка свойств товаров
+            </summary>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.ProductPropertyController.GetById(System.Guid)">
+            <summary>
+            Получение свойства товара по ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.ProductPropertyController.Update(MusicShop.Application.DTO.ProductProperty.ProductPropertyUpdateDTO)">
+            <summary>
+            Изменение свойства товаров
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.ProductPropertyController.Delete(System.Guid)">
+            <summary>
+            Удаление свойства товара
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.ProductPropertyController.GetByCategoryId(System.Guid)">
+            <summary>
+            Получение списка свойств товаров по Id категории
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.ReviewController.Create(MusicShop.Application.DTO.Review.ReviewCreateDTO)">
+            <summary>
+            Создание отзыва
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.ReviewController.Update(MusicShop.Application.DTO.Review.ReviewUpdateDTO)">
+            <summary>
+            Изменение отзыва
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.ReviewController.GetPageByProductId(System.Guid,MusicShop.Application.DTO.PageModels.PaginationDTO)">
+            <summary>
+            Получение страницы отзывов по Id товара
+            </summary>
+            <param name="productId"></param>
+            <param name="pagination"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.ReviewController.GetPageByUserId(MusicShop.Application.DTO.PageModels.PaginationDTO)">
+            <summary>
+            Получение страницы отзывов по Id пользователя
+            </summary>
+            <param name="pagination"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.ReviewController.GetById(System.Guid)">
+            <summary>
+            Получение отзыва по Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+        <member name="M:MusicShop.WebAPI.Controllers.ReviewController.Delete(System.Guid)">
+            <summary>
+            Удаление отзыва
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <response code="200">Успех</response>
+            <response code="401">Неавторизирован</response>
+            <response code="500">Ошибка сервера</response>
+        </member>
+    </members>
+</doc>

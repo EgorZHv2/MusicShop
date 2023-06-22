@@ -30,6 +30,9 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
+    var basePath = AppContext.BaseDirectory;
+    var xmlpath = Path.Combine(basePath, "WebAPI.xml");
+    c.IncludeXmlComments(xmlpath);
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
     c.AddSecurityDefinition(
         "Bearer",

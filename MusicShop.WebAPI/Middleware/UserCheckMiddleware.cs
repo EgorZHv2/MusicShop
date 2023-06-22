@@ -1,4 +1,5 @@
-﻿using MusicShop.Application.Interfaces.Repositories;
+﻿using MusicShop.Application.Exceptions;
+using MusicShop.Application.Interfaces.Repositories;
 using MusicShop.Application.Interfaces.Services;
 using MusicShop.Domain.Options;
 using System.Globalization;
@@ -28,6 +29,7 @@ namespace MusicShop.WebAPI.Middleware
                 userData.Role = user.Role;
 
             }
+           
             await _next.Invoke(context);
         }
     }

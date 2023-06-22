@@ -17,6 +17,16 @@ namespace MusicShop.WebAPI.Controllers
         {
             _categoryService = categoryService;
         }
+
+        /// <summary>
+        /// Создание категории
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
+       
         [HttpPost]
         [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
         public async Task<IActionResult> Create(CategoryCreateDTO dto)
@@ -24,6 +34,15 @@ namespace MusicShop.WebAPI.Controllers
             var result = await _categoryService.Create(dto);
             return Ok(result);
         }
+        /// <summary>
+        /// Изменение категории
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
+       
         [HttpPut]
         [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
         public async Task<IActionResult> Update(CategoryUpdateDTO dto)
@@ -31,6 +50,15 @@ namespace MusicShop.WebAPI.Controllers
             await _categoryService.Update(dto);
             return Ok();
         }
+        /// <summary>
+        /// Удаление категории
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
+       
         [HttpDelete]
         [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
         public async Task<IActionResult> Delete(Guid id)
@@ -38,12 +66,30 @@ namespace MusicShop.WebAPI.Controllers
             await _categoryService.Delete(id);
             return Ok();
         }
+        /// <summary>
+        /// Получение страницы категорий
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
+        
         [HttpGet("get-page")]
+        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
         public async Task<IActionResult> GetPage([FromQuery] PaginationDTO dto)
         {
             var result = await _categoryService.GetPage(dto);
             return Ok(result);
         }
+        /// <summary>
+        /// Получение категории по Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
         [HttpGet("{id}")]
         [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
         public async Task<IActionResult> GetById(Guid id)
@@ -51,6 +97,13 @@ namespace MusicShop.WebAPI.Controllers
             var result = await _categoryService.GetById(id);
             return Ok(result);
         }
+        /// <summary>
+        /// Получение короткого списка категорий
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
         [HttpGet("get-short")]
         public async Task<IActionResult> GetShort()
         {

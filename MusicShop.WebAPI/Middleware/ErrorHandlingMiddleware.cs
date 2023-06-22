@@ -33,8 +33,9 @@ namespace MusicShop.WebAPI.Middleware
             }
             catch(Exception ex) 
             {
-
+                await ResponseError(context, ex.Message, HttpStatusCode.InternalServerError);
             }
+       
         }
 
         public async Task ResponseError(HttpContext context, string message, HttpStatusCode code = HttpStatusCode.InternalServerError)

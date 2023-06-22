@@ -15,14 +15,30 @@ namespace MusicShop.WebAPI.Controllers
         {
             _addressService = addressService;
         }
+        /// <summary>
+        /// Создание адрес
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
         [HttpPost]
         [Authorize]
-      
         public async Task<IActionResult> Create(AddressCreateDTO dto)
         {
             var result = await _addressService.Create(dto);
             return Ok(result);
         }
+        /// <summary>
+        /// Получение адреса по Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
+      
         [HttpGet("{id}")]
         [Authorize]
         public async Task<IActionResult> GetById(Guid id)
@@ -30,6 +46,14 @@ namespace MusicShop.WebAPI.Controllers
             var result = await _addressService.GetById(id);
             return Ok(result);
         }
+        /// <summary>
+        /// Получение адреса последнего заказа
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
+        
         [HttpGet("last-order-address")]
         [Authorize]
         public async Task<IActionResult> GetLastByUser()

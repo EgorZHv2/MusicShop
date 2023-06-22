@@ -15,7 +15,14 @@ namespace MusicShop.WebAPI.Controllers
         {
             _basketService= basketService;
         }
-
+        /// <summary>
+        /// Добавление товара в корзину
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
         [HttpPost("add-product-to-basket")]
         [Authorize]
         public async Task<IActionResult> AddProductToBasket(Guid productId) 
@@ -23,7 +30,14 @@ namespace MusicShop.WebAPI.Controllers
             await _basketService.AddProductToBasket(productId);
             return Ok();
         }
-
+        /// <summary>
+        /// Удаление продукта из корзины
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
         [HttpDelete("remove-product-from-basket")]
         [Authorize]
         public async Task<IActionResult> RemoveProductFromBasket(Guid productId)
@@ -31,6 +45,13 @@ namespace MusicShop.WebAPI.Controllers
             await _basketService.RemoveProductFromBasket(productId);
             return Ok();
         }
+        /// <summary>
+        /// Очистка корзины
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
         [HttpDelete("clear-basket")]
         [Authorize]
         public async Task<IActionResult> ClearBasket()
@@ -38,6 +59,14 @@ namespace MusicShop.WebAPI.Controllers
             await _basketService.ClearBasket();
             return Ok();
         }
+        /// <summary>
+        /// Получение страницы продуктов в корзине
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
         [HttpGet("get-products-in-basket")]
         [Authorize]
         public async Task<IActionResult> GetProductsPage([FromQuery] PaginationDTO dto)
