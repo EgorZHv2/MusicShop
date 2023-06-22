@@ -6,7 +6,7 @@
     <members>
         <member name="M:MusicShop.WebAPI.Controllers.AddressController.Create(MusicShop.Application.DTO.Address.AddressCreateDTO)">
             <summary>
-            Создание адрес
+            Создание адреса
             </summary>
             <param name="dto"></param>
             <returns></returns>

@@ -38,7 +38,7 @@ namespace MusicShop.WebAPI.Middleware
        
         }
 
-        public async Task ResponseError(HttpContext context, string message, HttpStatusCode code = HttpStatusCode.InternalServerError)
+        private async Task ResponseError(HttpContext context, string message, HttpStatusCode code = HttpStatusCode.InternalServerError)
         {
             context.Response.StatusCode = (int)code;
             context.Response.Headers["Content-Type"] = "application/json";

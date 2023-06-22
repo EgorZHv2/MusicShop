@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using MusicShop.Application.DTO.Address;
 using MusicShop.Application.Interfaces.Services;
+using MusicShop.WebAPI.Filters;
 
 namespace MusicShop.WebAPI.Controllers
 {
@@ -16,7 +17,7 @@ namespace MusicShop.WebAPI.Controllers
             _addressService = addressService;
         }
         /// <summary>
-        /// Создание адрес
+        /// Создание адреса
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
@@ -24,7 +25,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPost]
-        [Authorize]
+        [CustomAuthorize]
         public async Task<IActionResult> Create(AddressCreateDTO dto)
         {
             var result = await _addressService.Create(dto);

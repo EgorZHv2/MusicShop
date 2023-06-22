@@ -123,6 +123,9 @@
   <data name="EmailAlreadyInUseException" xml:space="preserve">
     <value>Email уже используется</value>
   </data>
+  <data name="NotAuthorizedException" xml:space="preserve">
+    <value>Вы не авторизованы</value>
+  </data>
   <data name="OrderNotFoundException" xml:space="preserve">
     <value>Заказ не найден</value>
   </data>
