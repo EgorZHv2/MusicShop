@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using MusicShop.Application.DTO.Address;
 using MusicShop.Application.Interfaces.Services;
-using MusicShop.WebAPI.Filters;
+
 
 namespace MusicShop.WebAPI.Controllers
 {
@@ -25,7 +25,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPost]
-        [CustomAuthorize]
+        [Authorize]
         public async Task<IActionResult> Create(AddressCreateDTO dto)
         {
             var result = await _addressService.Create(dto);

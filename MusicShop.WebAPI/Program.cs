@@ -15,7 +15,7 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Identity.Client;
 using MusicShop.Domain.Options.Configurations;
-using MusicShop.WebAPI.Filters;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
