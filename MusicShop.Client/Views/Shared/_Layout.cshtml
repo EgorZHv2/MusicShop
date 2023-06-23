@@ -7,33 +7,44 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MusicShop.Client.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/all.min.css" asp-append-version="true"/>
+    
+   
 </head>
 <body>
     <header>
         <div class="headernavblock">
-            <div><img src="/Resources/icons/FooterPhone.png"></div>
+            <div class="headersingle-cta"><i class="fa fa-phone"></i></div>
             <div class="headercontacttext">8 (888) 888-88-88</div>
-            <div><img src="/Resources/icons/Clock.png"></div>
+            <div class="headersingle-cta"><i class="fa fa-clock"></i></div>
             <div class="headercontacttext">Пн-Пт 10:00-18:00</div>
-            <div><img src="/Resources/icons/FooterEmail.png"></div>
+            <div class="headersingle-cta"><i class="fa fa-envelope"></i></div>
             <div class="headercontacttext">ket@mail.ru</div>
-            <div><img src="/Resources/icons/Placeholder.png"></div>
+            <div class="headersingle-cta"><i class="fa fa-location-dot"></i></div>
             <div class="headercontacttext">г.Кострома</div>
         </div>
 
-        <div class="headerblock">
-            <div class="headerblock1">
-                <p class="logotext">MusicShop</p>
-            </div>
+        <nav class="navbar">
+            <div class="nav">
+                    <div class="headerblock1">
+                        <p class="logotext">MusicShop</p>
+                    </div>
 
-            <div class="headerblock2">
-                <a href="/Home/Index" class="headerhreftext">Главная</a>
-                <a href="/Home/Catalog" class="headerhreftext">Каталог</a>
-                <a href="/Home/About" class="headerhreftext">О нас</a>
-                <a href="/Home/Contact" class="headerhreftext">Контакты</a>
-                <a href="/Home/Login" class="headerhreftext">Войти/Зарегистрироваться</a>
+                    <a href="/Home/Index" class="headerhreftext">Главная</a>
+                    <a href="/Home/Catalog" class="headerhreftext">Каталог</a>
+                    <a href="/Home/About" class="headerhreftext">О нас</a>
+                    <a href="/Home/Contact" class="headerhreftext">Контакты</a>
+
+                    <div class="nav-items">
+                        <div class="search">
+                            <input type="text" class="search-box" placeholder="Поиск оборудования">
+                            <button class="search-btn">Поиск</button>
+                        </div>
+                        <a href="/Home/Login"><i class="fa fa-user" style="color: #000000"></i></a>
+                        <a href="#"><i class="fa fa-cart-shopping" style="color: #000000"></i></a>
+                    </div>
             </div>
-        </div>
+        </nav>
     </header>
     <div class="w-100 p-0 m-0">
         <main role="main" class="pb-3 w-100">
@@ -41,41 +52,108 @@
         </main>
     </div>
 
-    <footer id="footer">
-        <div class="sectioncontainer">
-            <div class="ourcontacts">
-                <p>Связь с нами</p>
-                <span>У вас остались вопросы? Напишите нам - мы ответим в ближайшее время!</span>
-                <div class="footercontacts">
-                    <div><img src="/Resources/icons/FooterPhone.png"></div>
-                    <div class="footercontacttext">8 (888) 888-88-88</div>
-                    <div><img src="/Resources/icons/FooterEmail.png"></div>
-                    <div class="footercontacttext">ket@mail.ru</div>
-                </div>
 
-            </div>
-            <div class="sendmessage">
-                <form method="post" asp-controller="Home" asp-action="Index">
-                    <div class="footerlabelcontainer">
-                        <label class="footerlabel">Имя</label>
-                        <label class="footerlabel" style="margin-left: 10%;">Фамилия</label>
-                    </div>
-                    <div class="footerinputcontainer">
-                        <input name="FirstName" type="text" placeholder="Введите имя">
-                        <input name="LastName" style="margin-left: 10%;" type="text" placeholder="Введите фамилию">
-                    </div>
-                    <div class="message">
-                        <div><label class="footerlabel">Сообщение</label></div>
-                        <div><textarea name="MessageText" class="messagearea" placeholder="Ваше сообщение"></textarea></div>
-                        <div class="btncontainer">
-                            <button class="sendmessagebtn">Отправить сообщение</button>
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-cta pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fa fa-location-dot"></i>
+                            <div class="cta-text">
+                                <h4>Местоположение</h4>
+                                <span>г.Кострома</span>
+                            </div>
                         </div>
-
                     </div>
-                </form>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fa fa-phone"></i>
+                            <div class="cta-text">
+                                <h4>Телефон поддержки</h4>
+                                <span>8 (888) 888-88-88</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fa fa-envelope-open"></i>
+                            <div class="cta-text">
+                                <h4>Почта</h4>
+                                <span>ket@mail.ru</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-content pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-logo">
+                                    <p class="logotext">MusicShop</p>
+                            </div>
+                            <div class="footer-text">
+                                <p>
+                                    У нас вы найдете огромный ассортимент музыкального оборудования
+                                    самых известных мировых брендов.
+                                </p>
+                            </div>
+                            <div class="footer-social-icon">
+                                <span>Подпишитесть на нас</span>
+                                <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                                <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                                <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Активные ссылки</h3>
+                            </div>
+                            <ul>
+                                <li><a href="#">Главная</a></li>
+                                <li><a href="#">Каталог</a></li>
+                                <li><a href="#">О нас</a></li>
+                                <li><a href="#">Контакты</a></li>
+                                <li><a href="#">Войти</a></li>
+                                <li><a href="#">Последние новости</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Рассылка</h3>
+                            </div>
+                            <div class="footer-text mb-25">
+                                <p>Чтобы не пропустить свежие новости, подпишитесь на рассылку новостей.</p>
+                            </div>
+                            <div class="subscribe-form">
+                                <form action="#">
+                                    <input type="text" placeholder="Почта">
+                                    <button><i class="fab fa-telegram-plane"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                        <div class="copyright-text">
+                            <p>MusicShop &copy; 2023, Все права защищены.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/script.js" asp-append-version="true"></script>

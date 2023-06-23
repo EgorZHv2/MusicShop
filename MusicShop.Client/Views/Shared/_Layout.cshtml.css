@@ -1,7 +1,7 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
-
+/*Стилизация хэдера*/
 header {
     /* background-color: #F9F9F9; */
     height: 110px;
@@ -10,7 +10,7 @@ header {
 }
 
 .headernavblock {
-    background-color: #D8C3A5;
+    background-color: #f5e0c2;
     height: 50%;
     width: 100%;
     display: flex;
@@ -24,14 +24,23 @@ header {
     font-weight: 400;
 }
 
-.headerblock {
+.navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
-    display:flex;
+    z-index: 9;
+}
+
+.nav {
+    width:100%;
+    padding: 10px 10vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .headerblock1 {
-    width: 30%;
     height: 100%;
 }
 
@@ -44,152 +53,253 @@ header {
         font-family: 'Merriweather', serif;
     }
 
-.headerblock2 {
-    width: 70%;
-    height: 100%;
-    margin-top:20px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
 .headerhreftext {
     font-family: 'Lato', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
-    text-transform: uppercase;
     text-decoration: none;
-    color: #222222;
+    color: #000000;
+    margin-left:10px;
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
     
 }
 
-
-/*Подвал*/
-footer {
-    margin-top:50px;
-    background-color: #D8C3A5;
-    height: 100%;
-}
-
-    footer .sectioncontainer {
-        padding-top: 10px;
-        display: flex;
-    }
-
-.ourcontacts {
-    width: 70%;
-}
-
-    .ourcontacts p {
-        color: #1F1F1F;
-        font-size: 40px;
-        font-family: 'Merriweather', serif;
-    }
-
-    .ourcontacts span {
-        color: #1F1F1F;
-        font-size: 18px;
-        font-family: 'Lato', sans-serif;
-        font-weight: 300;
-    }
-
-.footercontacts {
-    display: flex;
+.search {
     width: 100%;
-    padding-top: 100px;
-}
-
-    .footercontacts img {
-        height: 20px;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-.footercontacttext {
-    font-family: 'Lato',sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 21px;
-    color: #1F1F1F;
-}
-
-.sendmessage {
-    width: 50%;
-    padding-top: 60px;
-}
-
-.footerlabelcontainer {
     display: flex;
-    justify-content: flex-start;
 }
 
-.footerlabel {
-    font-family: 'Lato',sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 22px;
-    color: #1F1F1F;
-    width: 40%;
-}
-
-.footerinputcontainer {
-    display: flex;
-    justify-content: flex-start;
-}
-
-    .footerinputcontainer input {
-        padding-top: 10px;
-        width: 40%;
-        border: none;
-        color: #000000;
-        border-bottom: 3px black solid;
-        background: none;
-        font-family: 'Lato',sans-serif;
-        font-style: normal;
-        font-weight: 300;
-        font-size: 15px;
-        line-height: 30px;
-        resize: none;
-        text-decoration: none;
-    }
-
-.message {
-    margin-top: 20px;
+.search-box {
     width: 100%;
+    height: 40px;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid #d1d1d1;
+    text-transform: capitalize;
+    background: none;
+    color: #a9a9a9;
+    outline: none;
+    text-overflow: ellipsis;
+}
+
+.search-btn {
+    width: 30%;
+    height: 40px;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #383838;
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 15px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.search-box::placeholder {
+    color: #a9a9a9;
+    width:100%;
+
+}
+
+.nav-items a {
+    margin-left: 20px;
+}
+/*Конец стилизации хэдера*/
+
+/*Стилизация подвала*/
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.footer-section {
+    background: #f5e0c2;
     position: relative;
 }
 
-.messagearea {
-    margin-top: 10px;
-    height: 100px;
-    border: none;
+.footer-cta {
+    border-bottom: 1px solid #373636;
+}
+
+.single-cta i {
+    font-size: 30px;
+    float: left;
+}
+
+.cta-text {
+    padding-left: 15px;
+    display: inline-block;
+}
+
+    .cta-text h4 {
+        color: #000000;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 2px;
+    }
+
+    .cta-text span {
+        color: #808080;
+        font-size: 15px;
+    }
+
+.footer-content {
+    position: relative;
+    z-index: 2;
+}
+
+.footer-pattern img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 330px;
+    background-size: cover;
+    background-position: 100% 100%;
+}
+
+.footer-logo {
+    margin-bottom: 30px;
+}
+
+    .footer-logo img {
+        max-width: 200px;
+    }
+
+.footer-text p {
+    margin-bottom: 14px;
+    font-size: 14px;
+    color: #808080;
+    line-height: 28px;
+}
+
+.footer-social-icon span {
     color: #000000;
-    border-bottom: 3px black solid;
-    background: none;
-    font-family: 'Lato',sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 21px;
-    resize: none;
-    width: 92%;
-    text-decoration: none;
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 20px;
 }
 
-.btncontainer {
-    margin-top: 10px;
-    width: 93%;
-    display: flex;
-    justify-content: end;
+.footer-social-icon a {
+    color: #fff;
+    font-size: 16px;
+    margin-right: 15px;
 }
 
-.sendmessagebtn {
-    background-color: #E85A4F;
-    font-weight: 400;
-    font-size: 18px;
+.footer-social-icon i {
+    height: 40px;
+    width: 40px;
     text-align: center;
-    color: #FFFFFF;
-    height: 60px;
-    border-radius: 15px;
-    border: 1px solid #000000;
+    line-height: 38px;
+    border-radius: 50%;
 }
+
+.facebook-bg {
+    background: #3B5998;
+}
+
+.twitter-bg {
+    background: #55ACEE;
+}
+
+.google-bg {
+    background: #DD4B39;
+}
+
+.footer-widget-heading h3 {
+    color: #000000;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+    .footer-widget-heading h3::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -15px;
+        height: 2px;
+        width: 50px;
+        background: #DD4B39;
+    }
+
+.footer-widget ul li {
+    display: inline-block;
+    float: left;
+    width: 50%;
+    margin-bottom: 12px;
+}
+
+    .footer-widget ul li a:hover {
+        color: #DD4B39;
+    }
+
+    .footer-widget ul li a {
+        color: #808080;
+        text-transform: capitalize;
+    }
+
+.subscribe-form {
+    position: relative;
+    overflow: hidden;
+}
+
+    .subscribe-form input {
+        width: 100%;
+        padding: 14px 28px;
+        background: #2E2E2E;
+        border: 1px solid #2E2E2E;
+        color: #fff;
+    }
+
+    .subscribe-form button {
+        position: absolute;
+        right: 0;
+        background: #DD4B39;
+        padding: 15px 20px;
+        border: 1px solid #DD4B39;
+        top: 0;
+    }
+
+        .subscribe-form button i {
+            color: #fff;
+            font-size: 22px;
+            transform: rotate(-6deg);
+        }
+
+.copyright-area {
+    background: #202020;
+    padding: 25px 0;
+}
+
+.copyright-text p {
+    margin: 0;
+    font-size: 14px;
+    color: #808080;
+}
+
+    
+
+.footer-menu li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+    .footer-menu li:hover a {
+        color: #ff5e14;
+    }
+
+    .footer-menu li a {
+        font-size: 14px;
+        color: #808080;
+    }
+/*Конец стилизации подвала*/
