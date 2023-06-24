@@ -81,10 +81,6 @@ namespace MusicShop.WebAPI.Controllers
         [CustomAuthorize(UserRole.Admin)]
         public async Task<IActionResult> GetPage([FromQuery] PaginationDTO dto)
         {
-            if (!ModelState.IsValid)
-            {
-                throw new CategoryNotFoundException();
-            }
             var result = await _categoryService.GetPage(dto);
             return Ok(result);
         }
