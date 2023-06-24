@@ -30,8 +30,4 @@
     <ProjectReference Include="..\MusicShop.Persistence\MusicShop.Persistance.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Filters\" />
-  </ItemGroup>
-
 </Project>

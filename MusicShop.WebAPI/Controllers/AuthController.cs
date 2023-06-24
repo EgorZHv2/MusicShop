@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MusicShop.Application.DTO.Identity;
 using MusicShop.Application.Interfaces.Services;
+using MusicShop.WebAPI.Filters;
 
 namespace MusicShop.WebAPI.Controllers
 {
@@ -53,7 +54,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPatch("change-password")]
-        [Authorize]
+        [CustomAuthorize]
         public async Task<IActionResult> ChangePassword(ChangePasswordDTO model)
         {
            

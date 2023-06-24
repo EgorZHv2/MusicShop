@@ -41,7 +41,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="500">Ошибка сервера</response>
       
         [HttpGet("{id}")]
-        [Authorize]
+        [CustomAuthorize]
         public async Task<IActionResult> GetById(Guid id)
         {
             var result = await _addressService.GetById(id);
@@ -56,7 +56,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="500">Ошибка сервера</response>
         
         [HttpGet("last-order-address")]
-        [Authorize]
+        [CustomAuthorize]
         public async Task<IActionResult> GetLastByUser()
         {
             var result = await _addressService.GetLastAddressByUserId();

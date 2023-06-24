@@ -6,6 +6,7 @@ using MusicShop.Application.DTO.PageModels;
 using MusicShop.Application.DTO.Product;
 using MusicShop.Application.Interfaces.Services;
 using MusicShop.Domain.Enums;
+using MusicShop.WebAPI.Filters;
 
 namespace MusicShop.WebAPI.Controllers
 {
@@ -27,7 +28,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPost]
-        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
+        [CustomAuthorize(UserRole.Admin)]
         public async Task<IActionResult> Create(ProductCreateDTO dto)
         {
             var result = await _productService.Create(dto);
@@ -43,7 +44,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="500">Ошибка сервера</response>
         
         [HttpPut]
-        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
+        [CustomAuthorize(UserRole.Admin)]
         public async Task<IActionResult> Update(ProductUpdateDTO dto)
         {
             await _productService.Update(dto);
@@ -72,7 +73,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpDelete("{id}")]
-        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
+        [CustomAuthorize(UserRole.Admin)]
         public async Task<IActionResult> Delete(Guid id)
         {
             await _productService.Delete(id);

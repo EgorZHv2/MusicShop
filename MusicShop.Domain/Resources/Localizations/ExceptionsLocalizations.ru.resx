@@ -147,4 +147,7 @@
   <data name="WrongPasswordException" xml:space="preserve">
     <value>Неверный пароль</value>
   </data>
+  <data name="WrongRoleException" xml:space="preserve">
+    <value>Недостаточно прав доступа</value>
+  </data>
 </root>
