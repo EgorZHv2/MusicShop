@@ -66,5 +66,19 @@ namespace MusicShop.Infrastructure.Services
             return result;
 
         }
+        public async Task DeleteFileById(Guid Id)
+        {
+            var file = await _fileInfoRepository.GetById(Id);
+            if(file != null)
+            {
+               await _fileInfoRepository.HardDelete(file);
+               var path = Path.Combine(Directory.GetCurrentDirectory(), "files", file.ParentEntityId.ToString(),file.Name +"."+file.Extension);
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+               
+            }
+        }
     }
 }

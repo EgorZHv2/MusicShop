@@ -10,10 +10,10 @@ namespace MusicShop.WebAPI.Filters
 {
     public class CustomAuthorize : Attribute, IAuthorizationFilter
     {
-        private IEnumerable<string> allowRoles;
+        private List<string> allowRoles = new List<string>();
         public CustomAuthorize(params UserRole[] roles)
         {
-            allowRoles = roles.Select(e=>e.ToString());
+            allowRoles = roles.Select(e=>e.ToString()).ToList();
         }
         public CustomAuthorize()
         {
@@ -26,9 +26,12 @@ namespace MusicShop.WebAPI.Filters
             {
                 throw new NotAuthorizedException();
             }
-            if(!allowRoles.Contains(context.HttpContext.User.Claims.FirstOrDefault(e=>e.Type == ClaimTypes.Role).Value))
+            if (allowRoles.Any())
             {
-                throw new WrongRoleException();
+                if (!allowRoles.Contains(context.HttpContext.User.Claims.FirstOrDefault(e => e.Type == ClaimTypes.Role).Value))
+                {
+                    throw new WrongRoleException();
+                }
             }
         }
     }

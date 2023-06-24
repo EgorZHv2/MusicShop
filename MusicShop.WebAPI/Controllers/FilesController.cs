@@ -62,5 +62,21 @@ namespace MusicShop.WebAPI.Controllers
             await _fileService.DeleteAllByParentEntityId(id);
             return Ok();
         }
+
+         /// <summary>
+        /// Удаление файла по Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <response code="200">Успех</response>
+        /// <response code="401">Неавторизирован</response>
+        /// <response code="500">Ошибка сервера</response>
+        [HttpDelete("{id}")]
+        [CustomAuthorize]
+        public async Task<IActionResult> DeleteFileById(Guid id)
+        {
+            await _fileService.DeleteFileById(id);
+            return Ok();
+        }
     }
 }

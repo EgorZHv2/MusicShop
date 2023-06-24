@@ -110,7 +110,7 @@ using (var scope = app.Services.CreateScope())
 {
     var provider = scope.ServiceProvider;
     var context = provider.GetRequiredService<ApplicationDbContext>();
-    context.Database.EnsureCreated();
+    context.Database.Migrate();
 }
 
 app.UseRequestLocalization(new RequestLocalizationOptions

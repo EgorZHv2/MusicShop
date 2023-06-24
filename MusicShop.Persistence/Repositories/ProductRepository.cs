@@ -40,7 +40,7 @@ namespace MusicShop.Persistance.Repositories
 
             
             queryable = filter.MinPrice != null ? queryable.Where(e =>e.Price >= filter.MinPrice) : queryable;
-            queryable = filter.MaxPrice != null ? queryable.Where(e =>e.Price >= filter.MaxPrice) : queryable;
+            queryable = filter.MaxPrice != null ? queryable.Where(e =>e.Price <= filter.MaxPrice) : queryable;
             queryable = !string.IsNullOrEmpty(filter.SearchQuery) ? queryable = queryable.Where(e => e.Name.Contains(filter.SearchQuery)) : queryable; 
            
 

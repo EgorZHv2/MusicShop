@@ -16,8 +16,8 @@ namespace MusicShop.Application.DTO.Identity
         [Required]
         [MinLength(8,ErrorMessage = "Пароль должен быть от 8 до 16 символов")]
         [MaxLength(16,ErrorMessage = "Пароль должен быть от 8 до 16 символов")]
-        [RegularExpression(@"^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9!@#$%^&*]{8,16})$",
-            ErrorMessage = "Пароль должен содержать цифры, строчные и заглавные буквы латинского алфавита, а так же спецсимволы")]
+        [RegularExpression(@"^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,16})$",
+            ErrorMessage = "Пароль должен содержать цифры, так же строчные и заглавные буквы латинского алфавита")]
         public string Password { get; set; }
         [Required]
         [Compare("Password",ErrorMessage = "Пароли не совпадают")]

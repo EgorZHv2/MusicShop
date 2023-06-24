@@ -12,5 +12,6 @@ namespace MusicShop.Application.Interfaces.Services
         Task Create(FileCreateDTO dto);
         Task DeleteAllByParentEntityId(Guid entityId);
         Task<IEnumerable<string>> GetFilesUrisByParentId(Guid id);
+        Task DeleteFileById(Guid Id);
     }
 }

@@ -5,6 +5,7 @@ using MusicShop.Application.Exceptions;
 using MusicShop.Application.Interfaces.Repositories;
 using MusicShop.Application.Interfaces.Services;
 using MusicShop.Domain.Entities;
+using MusicShop.Domain.Enums;
 using MusicShop.Domain.Options;
 using System;
 using System.Collections.Generic;
@@ -50,7 +51,7 @@ namespace MusicShop.Infrastructure.Services
             var result = _tokenService.GetToken(user);
             return result;
         }
-        public async Task Register(RegisterDTO dto)
+        public async Task Register(RegisterDTO dto, UserRole role = UserRole.Buyer)
         {
             var existingUser = await _userRepository.GetUserByEmail(dto.Email);
             if(existingUser != null)
@@ -59,6 +60,7 @@ namespace MusicShop.Infrastructure.Services
             }
             string salt = BCryptHelper.GenerateSalt(6);
             var user = _mapper.Map<UserEntity>(dto);
+            user.Role = role;
             user.PasswordHash = BCryptHelper.HashPassword(dto.Password, salt);
             var userId = await _userRepository.Create(user);
             await _basketRepository.Create(new BasketEntity { UserId = userId });
@@ -79,5 +81,7 @@ namespace MusicShop.Infrastructure.Services
             user.PasswordHash = BCryptHelper.HashPassword(dto.Password, salt);
             await _userRepository.Update(user);
         }
+     
+        
     }
 }
