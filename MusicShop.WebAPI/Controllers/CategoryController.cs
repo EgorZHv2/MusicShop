@@ -5,6 +5,8 @@ using MusicShop.Application.DTO.Category;
 using MusicShop.Application.DTO.PageModels;
 using MusicShop.Application.Interfaces.Services;
 using MusicShop.Domain.Enums;
+using MusicShop.WebAPI.Filters;
+using MusicShop.Application.Exceptions;
 
 namespace MusicShop.WebAPI.Controllers
 {
@@ -28,7 +30,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="500">Ошибка сервера</response>
        
         [HttpPost]
-        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
+        [CustomAuthorize(UserRole.Admin)]
         public async Task<IActionResult> Create(CategoryCreateDTO dto)
         {
             var result = await _categoryService.Create(dto);
@@ -44,7 +46,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="500">Ошибка сервера</response>
        
         [HttpPut]
-        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
+        [CustomAuthorize(UserRole.Admin)]
         public async Task<IActionResult> Update(CategoryUpdateDTO dto)
         {
             await _categoryService.Update(dto);
@@ -60,7 +62,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="500">Ошибка сервера</response>
        
         [HttpDelete]
-        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
+        [CustomAuthorize(UserRole.Admin)]
         public async Task<IActionResult> Delete(Guid id)
         {
             await _categoryService.Delete(id);
@@ -76,9 +78,13 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="500">Ошибка сервера</response>
         
         [HttpGet("get-page")]
-        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
+        [CustomAuthorize(UserRole.Admin)]
         public async Task<IActionResult> GetPage([FromQuery] PaginationDTO dto)
         {
+            if (!ModelState.IsValid)
+            {
+                throw new CategoryNotFoundException();
+            }
             var result = await _categoryService.GetPage(dto);
             return Ok(result);
         }
@@ -91,7 +97,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpGet("{id}")]
-        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
+        [CustomAuthorize(UserRole.Admin)]
         public async Task<IActionResult> GetById(Guid id)
         {
             var result = await _categoryService.GetById(id);

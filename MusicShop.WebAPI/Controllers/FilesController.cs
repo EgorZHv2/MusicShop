@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MusicShop.Application.DTO.File;
 using MusicShop.Application.Interfaces.Services;
+using MusicShop.Domain.Enums;
+using MusicShop.WebAPI.Filters;
 
 namespace MusicShop.WebAPI.Controllers
 {
@@ -24,7 +26,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPost]
-        [Authorize]
+        [CustomAuthorize]
         public async Task<IActionResult> Create([FromForm] FileCreateDTO dto)
         {
             await _fileService.Create(dto);
@@ -39,7 +41,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpGet("{id}")]
-        [Authorize]
+        [CustomAuthorize]
         public async Task<IActionResult> GetFilesUrisByParentId(Guid id)
         {
             var result = await _fileService.GetFilesUrisByParentId(id);
@@ -54,7 +56,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpDelete("{id}/by-parent-id")]
-        [Authorize]
+        [CustomAuthorize]
         public async Task<IActionResult> DeleteFilesByParentId(Guid id)
         {
             await _fileService.DeleteAllByParentEntityId(id);

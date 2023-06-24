@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MusicShop.Application.DTO.PageModels;
 using MusicShop.Application.Interfaces.Services;
+using MusicShop.WebAPI.Filters;
 
 namespace MusicShop.WebAPI.Controllers
 {
@@ -24,7 +25,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPost("add-product-to-basket")]
-        [Authorize]
+        [CustomAuthorize]
         public async Task<IActionResult> AddProductToBasket(Guid productId) 
         {
             await _basketService.AddProductToBasket(productId);
@@ -39,7 +40,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpDelete("remove-product-from-basket")]
-        [Authorize]
+        [CustomAuthorize]
         public async Task<IActionResult> RemoveProductFromBasket(Guid productId)
         {
             await _basketService.RemoveProductFromBasket(productId);
@@ -53,7 +54,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpDelete("clear-basket")]
-        [Authorize]
+        [CustomAuthorize]
         public async Task<IActionResult> ClearBasket()
         {
             await _basketService.ClearBasket();
@@ -68,7 +69,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpGet("get-products-in-basket")]
-        [Authorize]
+        [CustomAuthorize]
         public async Task<IActionResult> GetProductsPage([FromQuery] PaginationDTO dto)
         {
             var result = await _basketService.GetProductsInBasket(dto);

@@ -5,6 +5,7 @@ using MusicShop.Application.DTO.PageModels;
 using MusicShop.Application.DTO.Review;
 using MusicShop.Application.Interfaces.Services;
 using MusicShop.Domain.Enums;
+using MusicShop.WebAPI.Filters;
 
 namespace MusicShop.WebAPI.Controllers
 {
@@ -26,7 +27,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPost]
-        [Authorize]
+        [CustomAuthorize]
         public async Task<IActionResult> Create(ReviewCreateDTO dto)
         {
             var result =  await _reviewService.Create(dto);
@@ -41,7 +42,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPut]
-        [Authorize]
+        [CustomAuthorize]
         public async Task<IActionResult> Update(ReviewUpdateDTO dto)
         {
             await  _reviewService.Update(dto);
@@ -57,7 +58,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpGet("by-product")]
-        [Authorize]
+        [CustomAuthorize]
        
         public async Task<IActionResult> GetPageByProductId([FromQuery] Guid productId,[FromQuery] PaginationDTO pagination)
         {
@@ -73,7 +74,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpGet("by-user")]
-        [Authorize(Roles = $"{nameof(UserRole.Admin)},{nameof(UserRole.Moderator)}")]
+        [CustomAuthorize(UserRole.Admin,UserRole.Moderator)]
         public async Task<IActionResult> GetPageByUserId([FromQuery] PaginationDTO pagination)
         {
             var result = await _reviewService.GetPageByUserId(pagination);
@@ -102,7 +103,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpDelete("{id}")]
-        [Authorize]
+        [CustomAuthorize]
         public async Task<IActionResult> Delete(Guid id)
         {
             await _reviewService.Delete(id);

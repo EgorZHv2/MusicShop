@@ -5,6 +5,7 @@ using MusicShop.Application.DTO.PageModels;
 using MusicShop.Application.DTO.ProductProperty;
 using MusicShop.Application.Interfaces.Services;
 using MusicShop.Domain.Enums;
+using MusicShop.WebAPI.Filters;
 using System.Data;
 
 namespace MusicShop.WebAPI.Controllers
@@ -27,7 +28,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpGet("get-page")]
-        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
+        [CustomAuthorize(UserRole.Admin)]
         public async Task<IActionResult> GetPage([FromQuery]PaginationDTO dto)
         {
             var result = await _productPropertyService.GetPage(dto);
@@ -42,7 +43,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPost]
-        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
+        [CustomAuthorize(UserRole.Admin)]
         public async Task<IActionResult> Create(ProductPropertyCreateDTO dto)
         {
             var result = await _productPropertyService.Create(dto);
@@ -56,7 +57,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpGet("get-short")]
-        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
+        [CustomAuthorize(UserRole.Admin)]
         public async Task<IActionResult> GetShort()
         {
             var result = await _productPropertyService.GetShortList();
@@ -71,7 +72,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpGet("{id}")]
-        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
+        [CustomAuthorize(UserRole.Admin)]
         public async Task<IActionResult> GetById(Guid id)
         {
             var result = await _productPropertyService.GetById(id);
@@ -86,7 +87,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPut]
-        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
+        [CustomAuthorize(UserRole.Admin)]
         public async Task<IActionResult> Update(ProductPropertyUpdateDTO dto)
         {
             await _productPropertyService.Update(dto);
@@ -102,7 +103,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpDelete("{id}")]
-        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
+        [CustomAuthorize(UserRole.Admin)]
         public async Task<IActionResult> Delete(Guid id)
         {
             await _productPropertyService.Delete(id);
@@ -117,7 +118,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpGet("by-category-id/{id}")]
-        [Authorize(Roles = $"{nameof(UserRole.Admin)}")]
+        [CustomAuthorize(UserRole.Admin)]
         public async Task<IActionResult> GetByCategoryId(Guid id)
         {
             var result = await _productPropertyService.GetPropertiesByCategoryId(Guid.NewGuid());

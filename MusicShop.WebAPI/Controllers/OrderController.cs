@@ -5,6 +5,7 @@ using MusicShop.Application.DTO.Order;
 using MusicShop.Application.DTO.PageModels;
 using MusicShop.Application.Interfaces.Services;
 using MusicShop.Domain.Enums;
+using MusicShop.WebAPI.Filters;
 
 namespace MusicShop.WebAPI.Controllers
 {
@@ -26,7 +27,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPost]
-        [Authorize]
+        [CustomAuthorize]
         public async Task<IActionResult> Create(OrderCreateDTO dto)
         {
             var result = await _orderService.Create(dto);
@@ -41,7 +42,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPatch]
-        [Authorize(Roles = $"{nameof(UserRole.Admin)},{nameof(UserRole.Moderator)}")]
+        [CustomAuthorize(UserRole.Admin,UserRole.Moderator)]
         public async Task<IActionResult> UpdateOrderStatus(OrderUpdateDTO dto)
         {
             await _orderService.UpdateOrderStatus(dto);
@@ -56,7 +57,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpGet]
-        [Authorize]
+        [CustomAuthorize]
         public async Task<IActionResult> GetPage([FromQuery] PaginationDTO dto)
         {
             var result = await _orderService.GetPage(dto);
@@ -71,7 +72,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpGet("{id}")]
-        [Authorize]
+        [CustomAuthorize]
         public async Task<IActionResult> GetById(Guid id)
         {
             var result = await _orderService.GetById(id);
@@ -86,7 +87,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="401">Неавторизирован</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpDelete("{id}")]
-        [Authorize]
+        [CustomAuthorize]
         public async Task<IActionResult> Delete(Guid id)
         {
             await _orderService.Delete(id);
