@@ -26,6 +26,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <returns></returns>
         /// <response code="200">Успех</response>
         /// <response code="401">Неавторизирован</response>
+        /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpGet("get-page")]
         [CustomAuthorize(UserRole.Admin)]
@@ -41,6 +42,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <returns></returns>
         /// <response code="200">Успех</response>
         /// <response code="401">Неавторизирован</response>
+        /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPost]
         [CustomAuthorize(UserRole.Admin)]
@@ -55,6 +57,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <returns></returns>
         /// <response code="200">Успех</response>
         /// <response code="401">Неавторизирован</response>
+        /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpGet("get-short")]
         [CustomAuthorize(UserRole.Admin)]
@@ -70,6 +73,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <returns></returns>
         /// <response code="200">Успех</response>
         /// <response code="401">Неавторизирован</response>
+        /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpGet("{id}")]
         [CustomAuthorize(UserRole.Admin)]
@@ -85,6 +89,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <returns></returns>
         /// <response code="200">Успех</response>
         /// <response code="401">Неавторизирован</response>
+        /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPut]
         [CustomAuthorize(UserRole.Admin)]
@@ -101,6 +106,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <returns></returns>
         /// <response code="200">Успех</response>
         /// <response code="401">Неавторизирован</response>
+        /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpDelete("{id}")]
         [CustomAuthorize(UserRole.Admin)]
@@ -116,8 +122,9 @@ namespace MusicShop.WebAPI.Controllers
         /// <returns></returns>
         /// <response code="200">Успех</response>
         /// <response code="401">Неавторизирован</response>
+        /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
-        [HttpGet("by-category-id/{id}")]
+        [HttpGet("{id}/by-category-id")]
         [CustomAuthorize(UserRole.Admin)]
         public async Task<IActionResult> GetByCategoryId(Guid id)
         {

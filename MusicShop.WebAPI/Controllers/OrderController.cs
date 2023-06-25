@@ -25,6 +25,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <returns></returns>
         /// <response code="200">Успех</response>
         /// <response code="401">Неавторизирован</response>
+        /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPost]
         [CustomAuthorize]
@@ -40,6 +41,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <returns></returns>
         /// <response code="200">Успех</response>
         /// <response code="401">Неавторизирован</response>
+        /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPatch]
         [CustomAuthorize(UserRole.Admin,UserRole.Moderator)]
@@ -55,6 +57,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <returns></returns>
         /// <response code="200">Успех</response>
         /// <response code="401">Неавторизирован</response>
+        /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpGet]
         [CustomAuthorize]
@@ -70,6 +73,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <returns></returns>
         /// <response code="200">Успех</response>
         /// <response code="401">Неавторизирован</response>
+        /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpGet("{id}")]
         [CustomAuthorize]
@@ -85,6 +89,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <returns></returns>
         /// <response code="200">Успех</response>
         /// <response code="401">Неавторизирован</response>
+        /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpDelete("{id}")]
         [CustomAuthorize]

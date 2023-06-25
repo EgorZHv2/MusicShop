@@ -75,6 +75,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <returns></returns>
         /// <response code="200">Успех</response>
         /// <response code="401">Неавторизирован</response>
+        /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
         
         [HttpGet("get-page")]
@@ -91,6 +92,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <returns></returns>
         /// <response code="200">Успех</response>
         /// <response code="401">Неавторизирован</response>
+        /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpGet("{id}")]
         [CustomAuthorize(UserRole.Admin)]
@@ -105,6 +107,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <returns></returns>
         /// <response code="200">Успех</response>
         /// <response code="401">Неавторизирован</response>
+        /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpGet("get-short")]
         public async Task<IActionResult> GetShort()

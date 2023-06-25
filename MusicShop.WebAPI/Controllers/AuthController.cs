@@ -24,6 +24,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <returns></returns>
         /// <response code="200">Успех</response>
         /// <response code="401">Неавторизирован</response>
+        /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDTO model)
@@ -39,6 +40,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <returns></returns>
         /// <response code="200">Успех</response>
         /// <response code="401">Неавторизирован</response>
+        /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDTO model)
@@ -54,6 +56,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <returns></returns>
         /// <response code="200">Успех</response>
         /// <response code="401">Неавторизирован</response>
+        /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPost("register-admin")]
         [CustomAuthorize(UserRole.Admin)]
@@ -69,6 +72,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <returns></returns>
         /// <response code="200">Успех</response>
         /// <response code="401">Неавторизирован</response>
+        /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPatch("change-password")]
         [CustomAuthorize]
