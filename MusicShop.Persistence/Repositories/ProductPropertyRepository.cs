@@ -31,11 +31,8 @@ namespace MusicShop.Persistance.Repositories
        }
        public async Task<List<ProductPropertyEntity>> GetPropertiesByCategoryId(Guid id)
        {
-            return await _dbset
-                .Include(e => e.CategoryProductProperties)
-                .Include(e=>e.ProductPropertySet)
-                .Where(e => e.CategoryProductProperties.Any(e=>e.CategoryId == id))
-                .ToListAsync();
+            var category = await _context.Categories.Include(e=>e.ProductProperties).ThenInclude(e=>e.ProductPropertySet).FirstOrDefaultAsync(e => e.Id == id);
+            return  category.ProductProperties;
        }
 
     }

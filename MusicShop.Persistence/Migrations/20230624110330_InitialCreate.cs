@@ -437,6 +437,17 @@ namespace MusicShop.Persistance.Migrations
                     DateTime.UtcNow                   
                 }
             );
+            migrationBuilder.InsertData(
+                "Baskets",
+                new string[]
+                {
+                    "Id"
+                },
+                new object[]
+                {
+                    new Guid("eebcd542-6529-40db-a8f7-b06d493d4f59")                    
+                }
+            );
         }
 
         /// <inheritdoc />

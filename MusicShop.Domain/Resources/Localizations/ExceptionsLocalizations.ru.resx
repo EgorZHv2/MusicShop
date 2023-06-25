@@ -120,7 +120,7 @@
   <data name="CategoryNotFoundException" xml:space="preserve">
     <value>Категория товара не найдена</value>
   </data>
-  <data name="EmailAlreadyInUseException" xml:space="preserve">
+  <data name="EmailALreadyInUseException" xml:space="preserve">
     <value>Email уже используется</value>
   </data>
   <data name="NotAuthorizedException" xml:space="preserve">

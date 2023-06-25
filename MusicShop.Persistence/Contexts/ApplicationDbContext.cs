@@ -12,17 +12,17 @@ namespace MusicShop.Persistance.Contexts
 {
     public class ApplicationDbContext:DbContext
     {
-        public DbSet<ProductEntity> Products { get; set; } 
-        public DbSet<ProductPropertyEntity> ProductsProperties { get; set; } 
-        public DbSet<ProductPropertyValueEntity> ProductsPropertiesValues { get; set; }
-        public DbSet<UserEntity> Users { get; set; }
-        public DbSet<CategoryEntity> Categories { get; set; }
-        public DbSet<BasketEntity> Baskets { get; set; }
-        public DbSet<OrderEntity> Orders { get; set; }
-        public DbSet<AddressEntity> Addresses { get; set; }
-        public DbSet<ProductPropertySetEntity> ProductPropertiesSets { get; set; }
-        public DbSet<ReviewEntity> Reviews { get; set; }
-        public DbSet<FileInfoEntity> FileInfos { get; set; }
+        public DbSet<ProductEntity> Products { get; set; } = null!;
+        public DbSet<ProductPropertyEntity> ProductsProperties { get; set; } = null!;
+        public DbSet<ProductPropertyValueEntity> ProductsPropertiesValues { get; set; }= null!;
+        public DbSet<UserEntity> Users { get; set; }= null!;
+        public DbSet<CategoryEntity> Categories { get; set; }= null!;
+        public DbSet<BasketEntity> Baskets { get; set; } = null!;
+        public DbSet<OrderEntity> Orders { get; set; }= null!;
+        public DbSet<AddressEntity> Addresses { get; set; }= null!;
+        public DbSet<ProductPropertySetEntity> ProductPropertiesSets { get; set; }= null!;
+        public DbSet<ReviewEntity> Reviews { get; set; }= null!;
+        public DbSet<FileInfoEntity> FileInfos { get; set; }= null!;
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) 
         {
           

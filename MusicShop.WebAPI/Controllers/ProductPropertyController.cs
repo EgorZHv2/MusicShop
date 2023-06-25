@@ -128,7 +128,7 @@ namespace MusicShop.WebAPI.Controllers
         [CustomAuthorize(UserRole.Admin)]
         public async Task<IActionResult> GetByCategoryId(Guid id)
         {
-            var result = await _productPropertyService.GetPropertiesByCategoryId(Guid.NewGuid());
+            var result = await _productPropertyService.GetPropertiesByCategoryId(id);
             return Ok(result);
         }
     }
