@@ -143,7 +143,7 @@ body {
     color: #FFFFFF;
 }
 
-/*Стилизация карточки товара*/
+/*Стилизация карточки категорий*/
 #tovarcategory {
     /*background-color: #EBEBEB;*/
     height: 600px;
@@ -153,7 +153,7 @@ body {
     font-family: 'Lato', sans-serif;
     font-weight: 900;
     font-size: 24px;
-    color: #BDBDBD;
+    text-align: center;
     margin-top: 0;
     padding-top: 100px;
 }
@@ -252,33 +252,117 @@ body {
     text-align: center;
     text-decoration: none;
 }
-
-/*Окончание стилизации карточки товара*/
+/*Окончание стилизации карточки категорий*/
 
 /*Стилизация блока партнёров*/
-#ourpartners {
-    /*background-color: #EBEBEB;*/
-    height: 400px;
+.slick-slide {
+    margin: 0px 20px;
 }
 
-.indexheaderblack {
-    font-family: 'Merriweather', serif;
-    font-size: 48px;
-    color: #333333;
-    margin-top: 0;
-    padding-top: 50px;
-    text-align: center;
-}
-
-.partnerscontainer {
-    width: 100%;
-    display: flex;
-    margin: auto;
-}
-
-    .partnerscontainer img {
-        width: 25%;
+    .slick-slide img {
+        width: 100%;
     }
+
+.slick-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+    .slick-list:focus {
+        outline: none;
+    }
+
+    .slick-list.dragging {
+        cursor: pointer;
+    }
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+}
+
+    .slick-track:before,
+    .slick-track:after {
+        display: table;
+        content: '';
+    }
+
+    .slick-track:after {
+        clear: both;
+    }
+
+.slick-loading .slick-track {
+    visibility: hidden;
+}
+
+.slick-slide {
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+}
+
+[dir='rtl'] .slick-slide {
+    float: right;
+}
+
+.slick-slide img {
+    display: block;
+}
+
+.slick-slide.slick-loading img {
+    display: none;
+}
+
+.slick-slide.dragging img {
+    pointer-events: none;
+}
+
+.slick-initialized .slick-slide {
+    display: block;
+}
+
+.slick-loading .slick-slide {
+    visibility: hidden;
+}
+
+.slick-vertical .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+}
+
+.slick-arrow.slick-hidden {
+    display: none;
+}
 /*Окончание стилизация партнёров*/
 
 /*Стилизация отзывов*/
@@ -439,7 +523,6 @@ body {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-
 .about-us-props {
     margin: 20px 0 0 30px;
 }
@@ -552,7 +635,7 @@ body {
 .wsk-cp-text .description-prod p {
     margin: 0;
 }
-/* Truncate */
+
 .wsk-cp-text .description-prod {
     text-align: center;
     width: 100%;
@@ -661,3 +744,155 @@ a.buy-btn {
         color: #fff;
     }
 }
+/*Конец стилизации страницы Каталога*/
+
+/*Стилизация страницы Контакты*/
+.footer_get_touch_outer {
+    margin-top: 50px;
+    margin-bottom:25px;
+}
+
+.container {
+    width: 95%;
+    max-width: 1140px;
+    margin: auto;
+}
+
+.grid-70-30 {
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+.get_form_inner {
+    display: block;
+    padding: 50px 40px;
+    background: #fff;
+    box-shadow: -4px -2px 20px -7px #cfd5df;
+}
+
+.grid-50-50 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.inpt-name, .inpt-fam, .inpt-pochta, .inpt-tel {
+    border: 1px solid #dbdbdb;
+    border-radius: 2px;
+    color: #333;
+    height: 42px;
+    padding: 0 0 0 20px;
+    width: 100%;
+    outline: 0;
+}
+
+.grid-full {
+    margin: 20px 0;
+}
+
+textarea {
+    border: 1px solid #dbdbdb;
+    border-radius: 2px;
+    color: #333;
+    padding: 12px 0 0 20px;
+    width: 100%;
+    outline: 0;
+    margin-bottom: 20px;
+}
+
+.get_form_inner_text h3 {
+    color: #333;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+input[type="submit"] {
+    display: inline-block;
+    font-size: 16px;
+    text-transform: uppercase;
+    background: transparent;
+    border: 2px solid #333;
+    font-weight: 500;
+    padding: 10px 20px;
+    outline: 0;
+    cursor: pointer;
+    color: #000000;
+    transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    -webkit-transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    -moz-transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    -o-transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+    input[type="submit"]:hover {
+        background-color: #DD4B39;
+        border-color: #DD4B39;
+        color: #fff;
+    }
+
+.get_say_form {
+    display: inline-block;
+    padding: 45px 0 25px 30px;
+    background: #2E2E2E;
+    position: relative;
+}
+
+    .get_say_form h5 {
+        color: #fff;
+        font-size: 26px;
+        margin: 0 0 40px;
+    }
+
+.get_say_info_sec {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.get_say_social-icn {
+    display: flex;
+    position: absolute;
+    bottom: 40px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .get_say_social-icn a {
+        font-size: 22px;
+        color: #fff;
+        padding: 0 20px 0 0;
+    }
+
+.get_say_info_sec i {
+    color: #fff;
+    font-size: 32px;
+}
+
+.get_say_info_sec > li {
+    display: grid;
+    grid-template-columns: 40px auto;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+    .get_say_info_sec > li a {
+        width: 100%;
+        display: block;
+        padding: 15px 25px;
+        color: #fff;
+        font-size: 16px;
+        text-decoration: unset;
+        font-weight: 500;
+        background: #747474;
+        border-radius: 5px 0 0 5px;
+        transition: background 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        -webkit-transition: background 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        -moz-transition: background 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        -o-transition: background 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+
+        .get_say_info_sec > li a:hover {
+            background-color: #DD4B39;
+        }
+/*Конец стилизации страницы Контакты*/
