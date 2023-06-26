@@ -13,10 +13,10 @@ namespace MusicShop.Persistance.Repositories
     public class FileInfoRepository:BaseEntityRepository<FileInfoEntity>,IFileInfoRepository
     {
         public FileInfoRepository(ApplicationDbContext context):base(context) { }
-        public async Task<IEnumerable<string>> GetFilesNamesByParentId(Guid id)
+        public async Task<IEnumerable<FileInfoEntity>> GetFilesNamesByParentId(Guid id)
         {
             
-            return await _dbset.Where(e=>e.ParentEntityId == id).Select(e => new String(e.Name + "." + e.Extension)).ToListAsync();
+            return await _dbset.Where(e=>e.ParentEntityId == id).ToListAsync();
         }
         public async Task HardDeleteAllByParentId(Guid Id)
         {

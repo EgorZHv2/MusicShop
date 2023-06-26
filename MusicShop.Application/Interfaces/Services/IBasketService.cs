@@ -14,7 +14,7 @@ namespace MusicShop.Application.Interfaces.Services
     public interface IBasketService
     {
         Task AddProductToBasket(Guid productId);
-        Task<PageModelDTO<ProductOutputDTO>> GetProductsInBasket(PaginationDTO dto);
+        Task<PageModelDTO<ProductInBasketDTO>> GetProductsInBasket(PaginationDTO dto);
         Task RemoveProductFromBasket(Guid productId);
         Task ClearBasket();
     }

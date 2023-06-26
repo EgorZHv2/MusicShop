@@ -58,11 +58,11 @@ namespace MusicShop.Infrastructure.Services
             }
             await _fileInfoRepository.HardDeleteAllByParentId(entityId);     
         }
-        public async Task<IEnumerable<string>> GetFilesUrisByParentId(Guid id)
+        public async Task<IEnumerable<FileOutputDTO>> GetFilesUrisByParentId(Guid id)
         {
            
             var fileNames = await _fileInfoRepository.GetFilesNamesByParentId(id);
-            var result = fileNames.Select(e => new String("https://localhost:7030" + "/static" + "/" + id.ToString() + "/" + e));
+            var result = fileNames.Select(e => new FileOutputDTO { Id = e.Id, Path = "https://localhost:7030" + "/static" + "/" + id.ToString() + "/" + e.Name + "." + e.Extension });
             return result;
 
         }

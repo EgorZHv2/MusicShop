@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using MusicShop.Application.Exceptions;
 
 namespace MusicShop.Persistance.Repositories
 {
@@ -15,8 +16,13 @@ namespace MusicShop.Persistance.Repositories
         public AddressRepository(ApplicationDbContext context) : base(context) { }
         public async Task<AddressEntity?> GetLastAddressByUserId(Guid userId)
         {
-            var order = await _context.Orders.Include(e => e.Address).Where(e => e.UserId == userId).OrderByDescending(e=>e.Address.CreatedAt).FirstAsync();
-            return order.Address;
+            var userorder = await _context.Orders.Include(e=>e.Address).OrderByDescending(e=>e.CreatedAt).FirstOrDefaultAsync(e=>e.UserId== userId);
+            if(userorder == null)
+            {
+                throw new OrderNotFoundException();
+            }
+          
+            return userorder.Address;
         }
     }
 }

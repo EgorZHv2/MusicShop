@@ -31,6 +31,7 @@ namespace MusicShop.Application.Services
             var entity = _mapper.Map<OrderEntity>(dto);
             entity.UserId = _userData.Id;
             entity.OrderStatus = Domain.Enums.OrderStatus.Processed;
+            entity.Quantity = 1;
             var result  = await _orderRepository.Create(entity);
             return result;
         }

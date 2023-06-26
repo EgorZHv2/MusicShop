@@ -47,7 +47,7 @@ namespace MusicShop.Tests
 
             var result = await service.GetProductsInBasket(new PaginationDTO { PageNumber = 1, PageSize = 5 });
 
-            Assert.IsType<PageModelDTO<ProductOutputDTO>>(result);
+            Assert.IsType<PageModelDTO<ProductInBasketDTO>>(result);
         }
         [Fact]
         public async Task RemoveProductFromBasketTest()

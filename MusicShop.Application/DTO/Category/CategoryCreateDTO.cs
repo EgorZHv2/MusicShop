@@ -11,7 +11,7 @@ namespace MusicShop.Application.DTO.Category
     {
         [Required]
         public string Name { get; set; }
-        public Guid? ParentCategoryId { get; set; }
+        //public Guid? ParentCategoryId { get; set; }
         public List<Guid> PropertiesIds { get; set; } = new List<Guid>();
     }
 }

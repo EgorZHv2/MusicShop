@@ -48,10 +48,10 @@ namespace MusicShop.Application.Services
 
 
         }
-        public async Task<PageModelDTO<ProductOutputDTO>> GetProductsInBasket(PaginationDTO dto)
+        public async Task<PageModelDTO<ProductInBasketDTO>> GetProductsInBasket(PaginationDTO dto)
         {
             var pages = await _basketRepository.GetProductsPageByUserId(dto);
-            var result = _mapper.Map<PageModelDTO<ProductOutputDTO>>(pages);
+            var result = _mapper.Map<PageModelDTO<ProductInBasketDTO>>(pages);
             return result;
 
         }

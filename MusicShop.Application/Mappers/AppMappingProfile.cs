@@ -56,7 +56,8 @@ namespace MusicShop.Application.Mappers
             CreateMap<ProductEntity, ProductOutputDTO>()
                 .ForMember(e=>e.CategoryName,opt => opt.MapFrom(e=>e.Category.Name));
             CreateMap<PageModelDTO<ProductEntity>,PageModelDTO<ProductOutputDTO>>();
-
+            CreateMap<ProductEntity, ProductInBasketDTO>();
+            CreateMap<PageModelDTO<ProductEntity>,PageModelDTO<ProductInBasketDTO>>();
             //User maps
             CreateMap<RegisterDTO, UserEntity>();
 

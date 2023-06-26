@@ -9,7 +9,7 @@ namespace MusicShop.Application.Interfaces.Repositories
 {
     public interface IFileInfoRepository:IBaseEntityRepository<FileInfoEntity>
     {
-        Task<IEnumerable<string>> GetFilesNamesByParentId(Guid id);
+        Task<IEnumerable<FileInfoEntity>> GetFilesNamesByParentId(Guid id);
         Task HardDeleteAllByParentId(Guid Id);
     }
 }
