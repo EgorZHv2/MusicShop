@@ -44,6 +44,7 @@ namespace MusicShop.Application.Services
                 throw new ProductNotFoundException();
             }
             basket.Products.Add(product );
+            await _productBasketRepository.ClearBasket();
             await _basketRepository.Update(basket);
 
 

@@ -44,7 +44,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpPatch]
-        [CustomAuthorize(UserRole.Admin,UserRole.Moderator)]
+        [CustomAuthorize(UserRole.Admin)]
         public async Task<IActionResult> UpdateOrderStatus(OrderUpdateDTO dto)
         {
             await _orderService.UpdateOrderStatus(dto);

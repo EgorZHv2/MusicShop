@@ -78,7 +78,7 @@ namespace MusicShop.WebAPI.Controllers
         /// <response code="404">Не найдено</response>
         /// <response code="500">Ошибка сервера</response>
         [HttpGet("by-user")]
-        [CustomAuthorize(UserRole.Admin,UserRole.Moderator)]
+        [CustomAuthorize(UserRole.Admin)]
         public async Task<IActionResult> GetPageByUserId([FromQuery] PaginationDTO pagination)
         {
             var result = await _reviewService.GetPageByUserId(pagination);
